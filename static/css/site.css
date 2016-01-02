@@ -1,0 +1,727 @@
+/*body {
+  padding: 40px;
+  max-width: 1000px;
+}*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeIn ease-in 1s;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+dl,
+dt,
+dd,
+a,
+input[type="text"],
+input[type="email"],
+textarea {
+  font-family: "brandon-grotesque", sans-serif;
+}
+.wf-loading h1,
+.wf-loading h2,
+.wf-loading h3,
+.wf-loading h4,
+.wf-loading h5,
+.wf-loading h6,
+.wf-loading p,
+.wf-loading ul,
+.wf-loading li,
+.wf-loading dl,
+.wf-loading dt,
+.wf-loading dd,
+.wf-loading a,
+.wf-loading input[type="text"],
+.wf-loading input[type="email"],
+.wf-loading textarea {
+  visibility: hidden;
+}
+h1 .wf-active,
+h2 .wf-active,
+h3 .wf-active,
+h4 .wf-active,
+h5 .wf-active,
+h6 .wf-active,
+p .wf-active,
+ul .wf-active,
+li .wf-active,
+dl .wf-active,
+dt .wf-active,
+dd .wf-active,
+a .wf-active,
+input[type="text"] .wf-active,
+input[type="email"] .wf-active,
+textarea .wf-active,
+h1 .wf-inactive,
+h2 .wf-inactive,
+h3 .wf-inactive,
+h4 .wf-inactive,
+h5 .wf-inactive,
+h6 .wf-inactive,
+p .wf-inactive,
+ul .wf-inactive,
+li .wf-inactive,
+dl .wf-inactive,
+dt .wf-inactive,
+dd .wf-inactive,
+a .wf-inactive,
+input[type="text"] .wf-inactive,
+input[type="email"] .wf-inactive,
+textarea .wf-inactive {
+  visibility: visible;
+}
+h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: .05em;
+}
+h2 {
+  font-size: 3em;
+  line-height: 1;
+}
+h3 {
+  font-size: 2em;
+  line-height: 1.2;
+}
+h3 a {
+  color: inherit;
+}
+p {
+  font-family: "ff-tisa-web-pro", Georgia, serif;
+  line-height: 1.7;
+  margin-bottom: 2em;
+}
+p.lead {
+  margin-bottom: 0;
+}
+dl {
+  font-size: 1.1em;
+  margin-left: 2em;
+  margin-top: 2em;
+}
+dl dt {
+  position: relative;
+}
+dl dt:before {
+  content: '\e90b';
+  font-family: 'icomoon';
+  position: absolute;
+  font-size: 1em;
+  color: #ccc;
+  margin-left: -2em;
+}
+dl dd {
+  margin-bottom: 1em;
+  font-size: 1em;
+}
+a:hover {
+  color: #222;
+}
+nav {
+  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 1em;
+  overflow: hidden;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+#footer nav {
+  background-color: #222;
+  padding: 2em 1.5em;
+}
+#header nav {
+  height: 4.4em;
+  background-color: #222;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+.index #header nav {
+  opacity: 0;
+  animation: fadeIn ease-in 1s;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+}
+#header nav.transparent {
+  background-color: transparent;
+}
+.no-js #header nav.transparent:hover,
+#header nav.transparent.hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+@media (max-width: 640px) {
+  nav.hover,
+  .no-js nav:hover,
+  #footer nav {
+    height: 100% !important;
+  }
+}
+nav ul {
+  margin-top: 0.6em;
+  list-style: none;
+  line-height: 1.25;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: .1em;
+  font-size: 0.9em;
+}
+nav ul,
+nav li {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+nav ul > li > a {
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  display: inline-block;
+}
+nav ul > li:hover > a {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+nav ul > li > ul > li > a {
+  border-bottom: none !important;
+  margin-bottom: 0;
+}
+nav ul > li.active > a {
+  border-bottom: 2px solid #ffffff;
+}
+nav ul > li.active > ul {
+  display: block !important;
+}
+nav ul > li > a {
+  padding: 0 0 0.7em;
+  margin-bottom: 1.25em;
+  display: inline-block;
+}
+@media (max-width: 640px) {
+  nav ul > li > a {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+}
+nav ul > li > ul > li > a {
+  padding: 0;
+}
+nav ul > li > ul {
+  font-size: 1.1em;
+  margin-top: 1em;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+@media (max-width: 640px) {
+  nav ul > li > ul {
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+  }
+}
+nav ul > li > ul > li {
+  margin-bottom: 1em;
+}
+nav h4 {
+  font-size: 2.2em;
+  margin-bottom: 0.7em;
+  white-space: pre;
+  line-height: 1;
+}
+@media (max-width: 480px) {
+  nav h4 {
+    font-size: 2em;
+  }
+}
+nav h4,
+nav a {
+  color: #fff;
+  transition: color 0.3s;
+}
+nav h3 {
+  color: #999;
+  margin-bottom: 1em;
+}
+nav.transparent h3,
+nav.transparent h4,
+nav.transparent a {
+  color: #333;
+}
+nav.transparent:hover h3,
+nav.transparent:hover h4,
+nav.transparent:hover a {
+  color: #fff;
+}
+nav ul ul a,
+nav p {
+  color: #fff;
+  opacity: 0.7;
+}
+nav p {
+  margin-top: 0.8em;
+  font-size: 2em;
+  line-height: 1.25;
+  font-weight: 300;
+}
+nav a {
+  transition: all 0.3s;
+}
+nav a:hover {
+  color: #fff;
+  opacity: 1;
+}
+nav input[type="text"] {
+  background-color: transparent;
+  border-color: transparent;
+  border-bottom-color: #fff;
+  box-shadow: none;
+  padding: 0.25em 1em 0.25em 2em;
+  height: auto;
+  color: #999;
+  font-size: 1.5em;
+  margin-top: 0;
+}
+nav input[type="text"]:focus,
+nav input[type="text"]:active,
+nav input[type="text"]:hover {
+  color: #fff;
+  background-color: transparent;
+  outline: none;
+  border-color: #fff;
+}
+nav span.search {
+  position: relative;
+}
+nav span.search:before {
+  font-family: 'icomoon';
+  content: "\e900";
+  position: absolute;
+  left: 0.7em;
+  top: 0;
+  font-size: 20px;
+  line-height: 50px;
+  color: #fff;
+}
+nav .menu-toggle {
+  font-size: 1.25em;
+  text-transform: uppercase;
+  color: #999;
+  line-height: 2;
+  white-space: pre;
+}
+nav .menu-toggle i {
+  margin-left: 0.5em;
+  font-size: 1.5em;
+  vertical-align: text-bottom;
+}
+#footer nav .menu-toggle {
+  display: none;
+}
+@media (max-width: 480px) {
+  nav .menu-toggle span {
+    display: none;
+  }
+}
+.button {
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background-color: #333;
+  padding: 1em;
+}
+.button:hover {
+  background-color: #999;
+}
+.button.outline {
+  background-color: transparent;
+  border: 2px solid #333;
+  color: #333;
+}
+.button.outline:hover {
+  background-color: #333;
+  color: #fff;
+}
+.bg-dark .button.outline {
+  border-color: #fff;
+  color: #fff;
+}
+.bg-dark .button.outline:hover {
+  background-color: #fff;
+  color: #333;
+}
+.button.link {
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 0.8em;
+  color: #333;
+}
+.button.link:hover {
+  color: #666;
+}
+.bg-haze {
+  background-color: #f5f5f5;
+}
+.bg-dark {
+  background-color: #333;
+}
+.bg-dark * {
+  color: #fff;
+}
+.bold {
+  font-weight: bold;
+}
+.img-circle {
+  border-radius: 1000px;
+}
+.cover {
+  background-size: cover;
+  background-position: center center;
+}
+.padding {
+  padding: 5em;
+}
+.padding-tall {
+  padding: 10em 50px 10em;
+}
+.table {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+.table .cell {
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+  display: table-cell;
+}
+.grayscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+#hero {
+  font-size: 2em;
+  color: #fff;
+  background-color: #ccc;
+}
+#hero h1 {
+  font-size: 2em;
+  margin-top: 1em;
+}
+#hero p.lead {
+  font-size: 1em;
+  line-height: 1.5;
+}
+@media (max-width: 480px) {
+  #hero {
+    font-size: 1.25em;
+  }
+}
+#hero .cell {
+  opacity: 0;
+  animation: fadeIn ease-in 1s;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+.index #hero h1,
+.index #hero h3,
+.index #hero p {
+  color: #333;
+}
+.overlay {
+  background-color: rgba(110, 110, 110, 0.7);
+}
+.callout {
+  background-color: #eee;
+  padding: 1em 2em 0 2em;
+  border-color: transparent;
+}
+.callout p {
+  margin-bottom: 0;
+  color: #999;
+  font-size: 1em;
+}
+.callout .button {
+  margin-bottom: 0;
+}
+/* footer */
+#map h1 {
+  font-size: 2em;
+}
+#map ul {
+  list-style: none;
+  font-size: 1.5em;
+}
+#map ul li {
+  margin-bottom: 1em;
+  margin-left: 2em;
+  margin-top: 1em;
+}
+#map ul li:before {
+  content: '';
+  font-family: 'icomoon';
+  height: 1em;
+  width: 1em;
+  font-size: 1.125em;
+  color: #666;
+  display: block;
+  position: absolute;
+  margin-left: -1.75em;
+  margin-top: 0em;
+  border-radius: 1000px;
+}
+#map ul li.map:before {
+  content: '\e904';
+}
+#map ul li.email:before {
+  content: '\e905';
+}
+#map ul li.phone:before {
+  content: '\e906';
+}
+.card {
+  background-color: #ddd;
+  padding: 1em 1.5em;
+  margin-bottom: 2em;
+  transition: all 0.3s;
+  position: relative;
+}
+.card:hover {
+  background-color: #eee;
+}
+.card a {
+  color: inherit;
+}
+.card .button {
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: right;
+  color: #999;
+}
+.card p {
+  font-size: 1em;
+  margin-bottom: 0;
+}
+.grid .columns {
+  background-color: #ddd;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 80%;
+  transition: all 0.5s;
+}
+.grid .columns:nth-child(even) {
+  background-color: #ccc;
+}
+.grid .columns:hover {
+  background-size: auto 120%;
+}
+.grid .overlay {
+  background-color: rgba(110, 110, 110, 0.6);
+  height: 100%;
+  width: 100%;
+  transition: all 0.5s;
+}
+.grid .overlay * {
+  color: #fff;
+}
+.grid .overlay:hover {
+  background-color: rgba(110, 110, 110, 0.8);
+}
+p {
+  font-size: 1.2em;
+}
+p.lead {
+  font-size: 2em;
+}
+blockquote {
+  border-left: 0;
+}
+blockquote p.lead span {
+  font-weight: 900;
+  opacity: 0.4;
+}
+blockquote p.caption {
+  opacity: 0.4;
+}
+.slick-slide img {
+  display: block;
+  margin: 0 auto;
+}
+.slick-prev,
+.slick-next {
+  top: 50%;
+}
+.slick-prev:before,
+.slick-next:before {
+  border-top: 2px solid #ccc;
+  height: 30px;
+  width: 30px;
+  display: block;
+}
+.slick-prev:before {
+  content: '';
+  border-left: 2px solid #ccc;
+  border-radius: 1px;
+  transform: rotate(-45deg);
+}
+.slick-next:before {
+  content: '';
+  border-top: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+.slick-dots {
+  bottom: -100px;
+}
+.services ul {
+  font-size: 1.5em;
+  line-height: 1.5;
+  margin-top: 2em;
+}
+.services ul li {
+  margin-bottom: 0.75em;
+}
+.services ul li a {
+  color: #666;
+  border-bottom: 1px solid #ccc;
+}
+.staff {
+  margin-bottom: 4em;
+}
+.staff img {
+  margin-bottom: 1em;
+}
+.staff h3 {
+  margin-bottom: 0.25em;
+}
+.staff h5 {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  letter-spacing: .1em;
+  font-weight: bold;
+  color: #999;
+}
+.staff p {
+  color: #999;
+}
+.social {
+  font-size: 2em;
+}
+.social a {
+  color: #fff;
+  opacity: 0.6;
+  margin-right: 0.25em;
+}
+.social a:hover {
+  color: #fff;
+  opacity: 1;
+}
+i.icon-chevron-right {
+  vertical-align: middle;
+}
+i.icon-arrow-left,
+i.icon-arrow-right {
+  position: relative;
+  top: 0.1em;
+}
+/* Fallback styles */
+.book {
+  display: inline-block;
+  box-shadow: 0px 0px 20px #333;
+  margin: 10px;
+}
+.book img {
+  vertical-align: middle;
+}
+/*
+ *  In order for this to work, you must use Modernizer
+ *  to detect 3D transform browser support. This will add
+ *  a "csstransforms3d" class to the HTML element.
+ *
+ *  Visit http://modernizr.com/ for installation instructions
+ */
+.csstransforms3d .books {
+  -moz-perspective: 100px;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+.csstransforms3d .book {
+  position: relative;
+  -webkit-transform: perspective(100) rotateY(-3deg);
+  outline: 1px solid transparent;
+  /* Helps smooth jagged edges in Firefox */
+  box-shadow: none;
+  margin: 0;
+  transition: all 0.5s;
+}
+.csstransforms3d .book.alt {
+  -webkit-transform: perspective(100) rotateY(3deg);
+}
+.csstransforms3d .book img {
+  position: relative;
+  max-width: 100%;
+}
+.csstransforms3d .book:before,
+.csstransforms3d .book:after {
+  position: absolute;
+  top: 2%;
+  height: 96%;
+  content: ' ';
+  z-index: -1;
+}
+.csstransforms3d .book:before {
+  width: 100%;
+  background-color: #999;
+  box-shadow: 0px 0px 40px #999;
+}
+.csstransforms3d .book:after {
+  width: 5%;
+  left: 100%;
+  background-color: #EFEFEF;
+  box-shadow: inset 0px 0px 5px #aaa;
+  -moz-transform: rotateY(20deg);
+  -webkit-transform: perspective(100) rotateY(20deg);
+}
+.csstransforms3d .book.alt:after {
+  width: 5%;
+  left: auto;
+  right: 100%;
+  background-color: #ddd;
+  box-shadow: none;
+  -webkit-transform: perspective(100) rotateY(-20deg);
+}
+/* ---- particles.js container ---- */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: -1;
+}
+#particles-js canvas {
+  opacity: 0.2;
+}

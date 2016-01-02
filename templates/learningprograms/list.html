@@ -1,0 +1,80 @@
+{# ------------------------------------------------------- #}
+
+{# LIST VIEW OF ALL learningprograms #}
+
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append learningprograms to the site title defined in base.html #}
+{% block title %}{% parent %} - learningprograms{% endblock %}
+
+{% block content %}
+
+  <section id="hero" class="bg-dark cover grayscale" data-bg="/static/images/image-4.jpg">
+    <div class="overlay">
+      <div class="row">
+        <div class="columns">
+          <div class="table">
+            <div class="cell text-center padding-tall">
+              <h1>Learning Programs</h1>
+              <p class="lead">Supporting groups to do their best thinking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% for category in cms.learningprogramscategories %}
+    <section class="services padding-tall {% if loop.index % 2 == 0 %}bg-haze{% endif %}" style="padding-top: 5em;" id="{{ category.slug|replace('learningprogramscategories/', '') }}">
+      <div class="row" data-equalizer style="margin-bottom: 5em;">
+        <div class="columns medium-6" data-equalizer-watch>
+          <div class="table">
+            <div class="cell">
+
+              <h2>{{ category.name }}</h2>
+              <br>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus corporis, velit dicta repellat vitae recusandae consectetur voluptate quod accusamus eveniet debitis autem perspiciatis, assumenda tempora sint blanditiis maxime molestiae quidem.
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <div class="columns medium-6" data-equalizer-watch>
+          <div class="padding">
+            <img src="{{ category.illustration.url }}" alt="" class="grayscale">
+          </div>
+        </div>
+      </div>
+
+          <div class="row expanded small-up-1 medium-up-2 large-up-4" data-equalizer>
+            {% for item in category.learning_programs_category %}
+              <div class="columns">
+                <a href="{{ url(item) }}">
+                  <div class="card" data-equalizer-watch>
+                    <h3><a href="{{ url(item) }}">{{ item.name }}</a></h3>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia expedita, quaerat deserunt. Neque quod harum voluptates.
+                    </p>
+                    <p class="text-right">
+                      <a href="{{ url(item) }}" class="button link" style="padding-right: 0;">Learn More <i class="icon-arrow-right"></i></a>
+                    </p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </ul>
+    </section>
+  {% endfor %}
+
+{% endblock %}

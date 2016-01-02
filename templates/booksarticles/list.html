@@ -1,0 +1,63 @@
+{# ------------------------------------------------------- #}
+
+{# LIST VIEW OF ALL booksarticles #}
+
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append booksarticles to the site title defined in base.html #}
+{% block title %}{% parent %} - booksarticles{% endblock %}
+
+{% block content %}
+
+    <section id="hero" class="bg-dark cover grayscale" data-bg="">
+    <div class="overlay">
+      <div class="row">
+        <div class="columns text-center padding-tall">
+          <h1>Books &amp; Articles</h1>
+          <p class="lead">Supporting groups to do their best thinking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% for item in cms.booksarticles %}
+    <section class="padding-tall {% if loop.index % 2 == 0 %}bg-haze{% endif %}">
+      <div class="row" data-equalizer>
+        <div class="columns medium-6 text-center {% if loop.index % 2 == 0 %}medium-push-6{% endif %}" data-equalizer-watch>
+          <div class="book {% if loop.index % 2 %}alt{% endif %}">
+            <img data-src="{{ item.image|imageSize(400) }}" alt="" class="grayscale">
+          </div>
+        </div>
+        <div class="columns medium-6 {% if loop.index % 2 == 0 %}medium-pull-6{% endif %}" data-equalizer-watch>
+          <div class="table">
+            <div class="cell">
+              <h2 style="line-height: 1;">{{ item.name }}</h2>
+              <br>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quas repellendus, illo et nobis cupiditate accusantium iure, tenetur quam minus nostrum quisquam facilis in adipisci ullam ipsam repellat id mollitia.
+              </p>
+              <br>
+              <div>
+                <a href="#" class="button">Buy the Book <i class="icon-arrow-right"></i></a>
+                <a href="#" class="button outline">Buy Kaner's Chapter <i class="icon-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+
+  {% include 'templates/partials/experts.html' %}
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{# ------------------------------------------------------- #}
+
+{# YOUR BASE TEMPLATE. EVERYTHING GETS LOADED INTO THIS PAGE. #}
+
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+
+{# ------------------------------------------------------- #}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+  {# Grab the title and description from the CMS general settings. #}
+  {% set site_title = getSetting('site_name')%}
+  {% set site_description = getSetting('site_description')%}
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{% block title %}{{ site_title|default('Webhook site') }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ site_description|default('Built with Webhook.') }}{% endblock %}">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="shortcut icon" href="/static/images/favicon.png">
+    <link rel="apple-touch-icon" href="/static/images/touch-icon.png">
+
+    {# Put your CSS in here and we'll minify it into one file. No CDN scripts. More info: #}
+    {# http://www.webhook.com/docs/minify-your-js-and-css/ #}
+
+    <!-- build:css /static/css/minified.css -->
+    <link rel="stylesheet" href="/static/css/foundation.min.css">
+    <link rel="stylesheet" href="/static/css/slick.css">
+    <link rel="stylesheet" href="/static/css/slick-theme.css">
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="/static/css/site.css"/>
+    <!-- endbuild -->
+
+    <script src="https://use.typekit.net/zex6ywk.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+
+    {# Useful block for loading outside scripts in other pages. #}
+    {% block head_extra %}{% endblock %}
+  </head>
+  <body {% block body_attributes %}{% endblock %}>
+    {% block body %}
+
+      {% block header %}
+        <div id="header">{% include "templates/partials/header.html" %}</div>
+      {% endblock %}
+
+      {# By default, your inner pages will load into this block. #}
+      <div id="content">
+        {% block content %}{% endblock %}
+      </div>
+
+      {% block footer %}
+        <div id="footer">{% include "templates/partials/footer.html" %}</div>
+
+        {% for type in cms.types %}
+            <p><a href="{{url(type)}}">{{type}} type</a></p>
+        {% endfor %}
+      {% endblock %}
+
+      {# Put your JS in here and we'll minify it into one file. No CDN scripts. More info: #}
+      {# http://www.webhook.com/docs/minify-your-js-and-css/ #}
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+      <!-- build:js /static/javascript/minified.js -->
+      <script src="/static/javascript/foundation.min.js"></script>
+      <script src="/static/javascript/foundation.equalizer.js"></script>
+      <script src="/static/javascript/slick.min.js"></script>
+      <script src="/static/javascript/jquery.lazyloadxt.min.js"></script>
+      <script src="/static/javascript/jquery.lazyloadxt.autoload.min.js"></script>
+      <script src="/static/javascript/jquery.lazyloadxt.bg.min.js"></script>
+      <script src="/static/javascript/jquery.visible.min.js"></script>
+      <script src="/static/javascript/particles.min.js"></script>
+      <script src="/static/javascript/main.js"></script>
+      <!-- endbuild -->
+
+
+      {% block scripts_extra %}{% endblock %}
+
+      {# Google Analytics code. Feel free to remove. #}
+      <script>
+        // var _gaq=[['_setAccount','UA-3161902-1'],['_trackPageview']];
+        // (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        // g.src='//www.google-analytics.com/ga.js';
+        // s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    {% endblock %}
+  </body>
+</html>

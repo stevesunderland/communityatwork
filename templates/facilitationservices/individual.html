@@ -1,0 +1,77 @@
+{# ------------------------------------------------------- #}
+{# INDIVIDUAL VIEW FOR EACH facilitationservices #}
+{# This page can use any data from http:localhost:2000/cms/#/form/facilitationservices/ #}
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+{# ------------------------------------------------------- #}
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+{# This sets our page <title>. It will append this facilitationservices's name to the site title defined in base.html #}
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
+{% block content %}
+
+{#   <section id="hero" class="bg-haze cover grayscale" data-bg="{{ item.overview_image.url }}" style="background-size: auto 80%; background-repeat: no-repeat;">
+    <div class="overlay">
+      <div class="row">
+        <div class="columns text-center padding-tall">
+          <h6><a href="{{ url('facilitationservices') }}" class="button link" style="padding-left: 0; color: #fff;"><i class="icon-arrow-left"></i> Facilitation Services</a></h6>
+          <h1>{{ item.name }}</h1>
+          <p class="lead" style="font-size: 1em;">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet inventore architecto, et delectus alias doloremque sed ea veritatis at culpa sit, quidem quas quia non explicabo quis voluptatibus cum reiciendis.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section> #}
+
+  <section class="padding-tall">
+    <div class="row">
+      <div class="columns medium-8 medium-centered">
+        <h6><a href="{{ url('facilitationservices') }}" class="button link" style="padding-left: 0; color: #999;"><i class="icon-arrow-left"></i> Facilitation Services</a></h6>
+        <h1>{{ item.name }}</h1>
+
+      </div>
+    </div>
+    <div class="row" data-equalizer>
+      <div class="columns medium-6" data-equalizer-watch>
+        <div class="padding">
+          <img src="{{ item.overview_image.url }}" alt="" class="grayscale">
+        </div>
+      </div>
+      <div class="columns medium-6" data-equalizer-watch>
+        <div class="table">
+          <div class="cell">
+            <p class="lead">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet inventore architecto, et delectus alias doloremque sed ea veritatis at culpa sit, quidem quas quia non explicabo quis voluptatibus cum reiciendis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns medium-8 medium-centered">
+
+        {# <hr> #}
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie sapien nulla, sit amet malesuada magna pretium non. Donec feugiat ipsum aliquet, porttitor risus nec, condimentum justo. Ut sed vestibulum lacus. Etiam porta mi a dapibus egestas. Etiam eu mollis lectus, nec euismod erat. Aenean pellentesque tincidunt placerat. Morbi imperdiet lobortis ultricies.
+        </p>
+        <p>Quisque suscipit nulla ut faucibus vehicula. Morbi facilisis faucibus risus, ut scelerisque ante maximus at. Nulla interdum pretium ante, vestibulum laoreet odio porttitor vitae. Aliquam at orci in nisl rhoncus gravida. Sed eget aliquam augue, nec maximus magna. Mauris sagittis eu felis sed feugiat. Vestibulum pharetra at est eu pretium. Etiam nec felis ex. Vestibulum interdum efficitur erat a sagittis. Fusce vitae risus sed metus dapibus venenatis in at ex. Integer bibendum dolor sit amet eros fermentum, vitae sodales mi porta. Ut massa elit, aliquam quis porta scelerisque, viverra maximus tellus. Maecenas in magna semper, consequat justo eget, elementum libero.
+        </p>
+        <p>Aliquam dictum, sem nec gravida malesuada, nibh felis condimentum mauris, vel efficitur purus velit eget sapien. Morbi eu enim metus. Morbi nec tellus gravida, molestie urna in, semper lectus. Aenean vulputate egestas tincidunt. Maecenas nec ullamcorper magna, at vehicula tellus. Aliquam sit amet urna a leo pharetra interdum. Nam lacinia aliquam mauris at iaculis. Aenean et massa rutrum, tempus nunc semper, consectetur nulla. Nulla nisi ligula, pellentesque at congue vel, pretium ut dolor. Fusce eget purus eget turpis lobortis euismod ut ac risus.
+        </p>
+        <p>Ut aliquet lacus vitae lacus tincidunt commodo. Aenean egestas rutrum fringilla. Aliquam pulvinar, leo a malesuada pulvinar, augue quam finibus eros, at venenatis libero eros ut ante. Etiam velit ligula, luctus ut molestie in, vestibulum quis orci. Curabitur lobortis metus massa, sed feugiat elit condimentum sed. Duis ultricies turpis augue, a auctor metus euismod at. Quisque tempor risus et nisl condimentum, quis malesuada nibh pretium.
+        </p>
+        <p>Phasellus luctus nunc eu velit posuere finibus. Mauris augue sem, aliquet eu ipsum sit amet, pretium sodales libero. Cras ornare ornare lacus a malesuada. Pellentesque eget ex tristique, blandit magna quis, hendrerit lacus. Proin consectetur efficitur tellus, id rutrum leo luctus a. Etiam nec maximus ex. Curabitur enim justo, finibus vel vestibulum eget, vestibulum eget mi. Etiam id urna mi. In consequat varius congue. Aenean leo mauris, maximus in velit eget, viverra aliquam felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse ac erat ac orci scelerisque varius.
+        </p>
+        {# <p><a href="{{ url('facilitationservices') }}">View a list of all facilitationservices</a></p> #}
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-haze">
+    {% include 'templates/partials/book.html' %}
+  </div>
+
+{% endblock %}

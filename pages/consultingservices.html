@@ -1,0 +1,36 @@
+{% extends "templates/partials/base.html" %}
+{% block title %}{% parent %} - {{ cms.consultingservices.name }}{% endblock %}
+{% block content %}
+
+  <section id="hero" class="bg-dark cover grayscale" data-bg="/static/images/image-5.jpg">
+    <div class="overlay">
+      <div class="row">
+        <div class="columns">
+          <div class="table">
+            <div class="cell text-center padding-tall">
+              <h1>{{ cms.consultingservices.name }}</h1>
+              <p class="lead">Supporting groups to do their best thinking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="padding-tall" id="philosophy">
+    <div class="row">
+      <div class="columns text-center medium-12 medium-centered">
+        <h2 class="bold">Our Philosophy &amp; Approach</h2>
+        <br>
+        <p class="lead">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores accusamus, consectetur excepturi atque, iure quibusdam saepe dolorum necessitatibus repellendus earum voluptatibus vero aspernatur expedita, nam nostrum debitis facilis. Amet, quos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {% include 'templates/partials/testimonials.html' %}
+
+  {% include 'templates/partials/book.html' %}
+
+{% endblock %}
