@@ -220,4 +220,40 @@ $(window).on('resize', function(){
 //   }
 // });
 
-/* ---- particles.js config ---- */
+$(function() {
+  $.selz({
+      theme: {
+        button: {
+          bg:             "#5fa9df",
+          text:           "#fff"
+        },
+        checkout: {
+          headerBg:       "#333333",
+          headerText:     "#fff"
+        }
+      },
+      getTracking: function($link) {
+        // return $link.data("tracking");
+      },
+      onDataReady: function ($link, data) {
+        // Customise the link with item data
+        // $link.html('<img src="' + data.ImageUrlSmall + '" alt="' + data.Title + '">' + data.Title);
+      },
+      onModalOpen: function ($link) {
+        // Track open in Google Analytics
+        // ga('send', 'pageview', $link.attr("href"));
+      },
+      onPurchase: function (data) {
+        // Track purchase
+      },
+      onProcessing: function (data) {
+        // Track processing
+      },
+      onClose: function ($link, data) {
+        // Continue checkout flow
+        if(typeof data.modal_url === "string"){
+          $link.data("modal-url", data.modal_url);
+        }
+      }
+    });
+});

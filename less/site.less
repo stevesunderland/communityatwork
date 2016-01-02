@@ -66,6 +66,10 @@ p {
 	}
 }
 
+a {
+	transition: color 0.3s;
+}
+
 dl {
 	font-size: 1.1em;
 	margin-left: 2em;
@@ -554,6 +558,7 @@ nav {
 			margin-bottom: 1em;
 			margin-left: 2em;
 			margin-top: 1em;
+			color: #fff;
 
 			&:before {
 				content: '';
@@ -568,7 +573,16 @@ nav {
 				margin-left: -1.75em;
 				margin-top: 0em;
 				border-radius: 1000px;
+				transition: color 0.3s;
 
+			}
+
+			&:hover {
+				color: #fff;
+
+				&:before {
+					color: #fff;
+				}
 			}
 
 			&.map:before {
@@ -584,6 +598,13 @@ nav {
 	}
 }
 
+#map a {
+	color: #999;
+
+	&:hover {
+		color: #fff;
+	}
+}
 
 
 .card {
@@ -682,7 +703,7 @@ p {
 	font-size: 1.2em;
 
 	&.lead {
-		font-size: 2em;
+		font-size: 1.75em;
 	}
 
 }

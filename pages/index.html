@@ -100,13 +100,14 @@
       {% for item in cms.learningprogramscategories %}
         <div class="columns">
           <div class="card" data-equalizer-watch>
-            <a href="#">
+            <a href="{{ url('learningprograms') }}#{{ item.slug|replace('learningprogramscategories/', '', 'g') }}">
               <h3>{{ item.name }}</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis facilis quasi ex ipsum iste odio inventore quisquam, quae maiores dolore nam. Modi vitae, eos quidem eaque velit at quasi ab?
               </p>
+              <br>
               <p class="text-right">
-                <a href="#" class="button link small">Learn More <i class="icon-arrow-right"></i> </a>
+                <a href="{{ url('learningprograms') }}#{{ item.slug|replace('learningprogramscategories/', '', 'g') }}" class="button link small">Learn More <i class="icon-arrow-right"></i> </a>
               </p>
             </a>
           </div>

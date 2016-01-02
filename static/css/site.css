@@ -111,6 +111,9 @@ p {
 p.lead {
   margin-bottom: 0;
 }
+a {
+  transition: color 0.3s;
+}
 dl {
   font-size: 1.1em;
   margin-left: 2em;
@@ -472,6 +475,7 @@ nav .menu-toggle i {
   margin-bottom: 1em;
   margin-left: 2em;
   margin-top: 1em;
+  color: #fff;
 }
 #map ul li:before {
   content: '';
@@ -485,6 +489,13 @@ nav .menu-toggle i {
   margin-left: -1.75em;
   margin-top: 0em;
   border-radius: 1000px;
+  transition: color 0.3s;
+}
+#map ul li:hover {
+  color: #fff;
+}
+#map ul li:hover:before {
+  color: #fff;
 }
 #map ul li.map:before {
   content: '\e904';
@@ -494,6 +505,12 @@ nav .menu-toggle i {
 }
 #map ul li.phone:before {
   content: '\e906';
+}
+#map a {
+  color: #999;
+}
+#map a:hover {
+  color: #fff;
 }
 .card {
   background-color: #ddd;
@@ -550,7 +567,7 @@ p {
   font-size: 1.2em;
 }
 p.lead {
-  font-size: 2em;
+  font-size: 1.75em;
 }
 blockquote {
   border-left: 0;
