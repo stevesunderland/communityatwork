@@ -2,8 +2,8 @@
 {% block title %}{% parent %} - {{ cms.about.name }}{% endblock %}
 {% block content %}
 
-  <section id="hero" class="bg-haze cover grayscale" data-bg="/static/images/image-3.jpg">
-    <div class="overlay">
+  <section id="hero" class="bg-haze cover" data-bg="/static/images/image-3.jpg">
+    <div class="overlay overlay-purple">
       <div class="row">
         <div class="columns">
           <div class="table">
@@ -25,7 +25,7 @@
       {% for item in cms.staff %}
         <a href="{{ url(item) }}"></a>
           <div class="columns text-center staff">
-            <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle grayscale">
+            <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
             <h3>{{ item.name }}</h3>
             <h5 class="text-gray">Person Title</h5>
             <p>

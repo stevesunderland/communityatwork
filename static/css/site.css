@@ -22,7 +22,7 @@ h3,
 h4,
 h5,
 h6,
-p,
+p.lead,
 ul,
 li,
 dl,
@@ -41,7 +41,7 @@ textarea {
 .wf-loading h4,
 .wf-loading h5,
 .wf-loading h6,
-.wf-loading p,
+.wf-loading p.lead,
 .wf-loading ul,
 .wf-loading li,
 .wf-loading dl,
@@ -60,7 +60,7 @@ h3 .wf-active,
 h4 .wf-active,
 h5 .wf-active,
 h6 .wf-active,
-p .wf-active,
+p.lead .wf-active,
 ul .wf-active,
 li .wf-active,
 dl .wf-active,
@@ -77,7 +77,7 @@ h3 .wf-inactive,
 h4 .wf-inactive,
 h5 .wf-inactive,
 h6 .wf-inactive,
-p .wf-inactive,
+p.lead .wf-inactive,
 ul .wf-inactive,
 li .wf-inactive,
 dl .wf-inactive,
@@ -239,8 +239,7 @@ nav ul > li > ul > li > a {
   padding: 0;
 }
 nav ul > li > ul {
-  font-size: 1.1em;
-  margin-top: 1em;
+  font-size: 1.2em;
   text-transform: none;
   font-weight: 500;
   letter-spacing: normal;
@@ -298,7 +297,9 @@ nav p {
 nav a {
   transition: all 0.3s;
 }
-nav a:hover {
+nav a:hover,
+nav a:active,
+nav a:focus {
   color: #fff;
   opacity: 1;
 }
@@ -371,7 +372,8 @@ nav .menu-toggle i {
   color: #333;
 }
 .button.outline:hover {
-  background-color: #333;
+  background-color: #999;
+  border-color: #999;
   color: #fff;
 }
 .bg-dark .button.outline {
@@ -411,10 +413,20 @@ nav .menu-toggle i {
   background-position: center center;
 }
 .padding {
-  padding: 5em;
+  padding: 2em;
+}
+@media (min-width: 480px) {
+  .padding {
+    padding: 5em;
+  }
 }
 .padding-tall {
   padding: 10em 50px 10em;
+}
+@media (max-width: 480px) {
+  .padding-tall {
+    padding: 5em 1em 5em;
+  }
 }
 .table {
   height: 100%;
@@ -441,7 +453,7 @@ nav .menu-toggle i {
   margin-top: 1em;
 }
 #hero p.lead {
-  font-size: 1em;
+  font-size: 1.1em;
   line-height: 1.5;
 }
 @media (max-width: 480px) {
@@ -582,6 +594,7 @@ p {
 }
 p.lead {
   font-size: 1.75em;
+  line-height: 1.5;
 }
 blockquote {
   border-left: 0;

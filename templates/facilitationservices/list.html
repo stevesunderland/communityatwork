@@ -19,8 +19,8 @@
 
 {% block content %}
 
-  <section id="hero" class="bg-haze cover grayscale" data-bg="/static/images/image-2.jpg">
-    <div class="overlay">
+  <section id="hero" class="bg-haze cover" data-bg="/static/images/image-2.jpg">
+    <div class="overlay overlay-teal">
       <div class="row">
         <div class="columns">
           <div class="table">
@@ -56,7 +56,7 @@
           <div class="column medium-6 {% if loop.index % 2 == 0 %}medium-pull-6{% endif %}" data-equalizer-watch>
             <div class="padding">
               <!-- <img src="{{}}" alt=""> -->
-              <img src="/static/images/illustration-0{{ icons[loop.index0] }}.svg" alt="" class="grayscale">
+              <img src="/static/images/illustration-0{{ icons[loop.index0] }}.svg" alt="" class="">
             </div>
           </div>
         </div>

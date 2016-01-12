@@ -19,7 +19,7 @@
 
 {% block content %}
 
-    <section id="hero" class="bg-dark cover grayscale" data-bg="">
+    <section id="hero" class="bg-dark cover" data-bg="">
     <div class="overlay">
       <div class="row">
         <div class="columns text-center padding-tall">
@@ -35,7 +35,7 @@
       <div class="row" data-equalizer>
         <div class="columns medium-6 text-center {% if loop.index % 2 == 0 %}medium-push-6{% endif %}" data-equalizer-watch>
           <div class="book {% if loop.index % 2 %}alt{% endif %}">
-            <img data-src="{{ item.image|imageSize(400) }}" alt="" class="grayscale">
+            <img data-src="{{ item.image|imageSize(400) }}" alt="" class="">
           </div>
         </div>
         <div class="columns medium-6 {% if loop.index % 2 == 0 %}medium-pull-6{% endif %}" data-equalizer-watch>
