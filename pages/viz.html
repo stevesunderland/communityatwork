@@ -1,0 +1,523 @@
+{# ------------------------------------------------------- #}
+
+{# YOUR HOMEPAGE #}
+
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - Homepage{% endblock %}
+{% block body_attributes %}class="viz" style="background-color: #eee;"{% endblock body_attributes %}
+{% block content %}
+
+          <canvas id="arbor-js"></canvas>
+<!--   <section id="hero" class="" style="background-color: transparent;">
+    <div class="row expanded collapse">
+      <div class="columns">
+        <div class="table">
+          <div class="cell text-center padding-tall">
+            <h1>Community At Work</h1>
+            <p class="lead">Supporting groups to do their best thinking.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+{% endblock %}
+
+
+{% block scripts_extra %}
+  <script src="/static/javascript/arbor.js"></script>
+  <script src="/static/javascript/arbor-tween.js"></script>
+  <script src="/static/javascript/arbor-graphics.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/jquery.magnific-popup/1.0.0/jquery.magnific-popup.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.magnific-popup/1.0.0/magnific-popup.css">
+
+    <script>
+//
+// site.js
+//
+// the arbor.js website
+//
+(function($){
+  // var trace = function(msg){
+  //   if (typeof(window)=='undefined' || !window.console) return
+  //   var len = arguments.length, args = [];
+  //   for (var i=0; i<len; i++) args.push("arguments["+i+"]")
+  //   eval("console.log("+args.join(",")+")")
+  // }
+
+  var Renderer = function(elt){
+    var dom = $(elt)
+    var canvas = dom.get(0)
+    var ctx = canvas.getContext("2d");
+    var gfx = arbor.Graphics(canvas)
+    var sys = null
+
+    var selected = null,
+        nearest = null,
+        _mouseP = null;
+
+
+    var that = {
+      init:function(pSystem){
+        sys = pSystem
+        sys.screen({size:{width:dom.width(), height:dom.height()},
+                    padding:[50,50,50,50]})
+
+        $(window).resize(that.resize)
+        that.resize()
+        that._initMouseHandling()
+
+        if (document.referrer.match(/echolalia|atlas|halfviz/)){
+          // if we got here by hitting the back button in one of the demos,
+          // start with the demos section pre-selected
+          that.switchSection('demos')
+        }
+      },
+      resize:function(){
+        canvas.width = $(window).width()
+        canvas.height = 1 * $(window).height()
+        sys.screen({size:{width:canvas.width, height:canvas.height}})
+        _vignette = null
+        that.redraw()
+      },
+      redraw:function(){
+        gfx.clear()
+        sys.eachEdge(function(edge, p1, p2){
+          if (edge.source.data.alpha * edge.target.data.alpha == 0) return
+            if (edge.target.data.color  == "transparent") {
+                gfx.line(p1, p2, {stroke:"#cccccc", width:1, alpha:1})
+
+            } else {
+              gfx.line(p1, p2, { stroke: edge.target.data.color , width:2, alpha: 0.3})
+            }
+          // gfx.line(p1, p2, {stroke:"#cccccc", width:2, alpha:edge.target.data.alpha})
+        })
+        sys.eachNode(function(node, pt){
+          var w = Math.max(30, 30+gfx.textWidth(node.name) )
+          var size = node.data.size || 1;
+          if (node.data.alpha===0) return
+          if (node.data.shape=='dot'){
+            var w = (60+gfx.textWidth(node.name))*size;
+            gfx.oval(pt.x-w/2, pt.y-w/2, w, w, {fill:node.data.color, alpha:node.data.alpha})
+            gfx.text(node.name, pt.x, pt.y+7, {color:"white", align:"center", font:"brandon-grotesque", size:18*size})
+            // gfx.text(node.name, pt.x, pt.y+7, {color:"white", align:"center", font:"brandon-grotesque", size:16})
+          }else{
+            var fontsize = 18;
+              if ( node.data.color == "transparent" ) {
+                fontsize = 14;
+              } else {
+                gfx.rect(pt.x-w/2-20, pt.y-15, w*1.2, 26, 0, {fill:node.data.color, alpha:1})
+              }
+            gfx.text(node.name, pt.x, pt.y+9, {color:( node.data.color == "transparent" ? "#999999" : "#ffffff"), align:"center", font:"brandon-grotesque", size: fontsize})
+            // gfx.text(node.name, pt.x, pt.y+9, {color:"white", align:"center", font:"brandon-grotesque", size:12})
+          }
+        })
+      },
+
+      switchMode:function(e){
+        if (e.mode=='hidden'){
+          dom.stop(true).fadeTo(e.dt,0, function(){
+            if (sys) sys.stop()
+            $(this).hide()
+          })
+        }else if (e.mode=='visible'){
+          dom.stop(true).css('opacity',0).show().fadeTo(e.dt,1,function(){
+            that.resize()
+          })
+          if (sys) sys.start()
+        }
+      },
+
+      switchSection:function(newSection){
+        var parent = sys.getEdgesFrom(newSection)[0].source
+        var children = $.map(sys.getEdgesFrom(newSection), function(edge){
+          return edge.target
+        })
+
+        sys.eachNode(function(node){
+          if (node.data.shape=='dot') return // skip all but leafnodes
+
+          var nowVisible = ($.inArray(node, children)>=0)
+          var newAlpha = (nowVisible) ? 1 : 0
+          var dt = (nowVisible) ? .5 : .5
+          sys.tweenNode(node, dt, {alpha:newAlpha})
+
+          if (newAlpha==1){
+            node.p.x = parent.p.x + .05*Math.random() - .025
+            node.p.y = parent.p.y + .05*Math.random() - .025
+            node.tempMass = .001
+          }
+        })
+      },
+
+
+      _initMouseHandling:function(){
+        // no-nonsense drag and drop (thanks springy.js)
+        selected = null;
+        nearest = null;
+        var dragged = null;
+        var oldmass = 1
+
+        var _section = null
+
+        var handler = {
+          moved:function(e){
+            var pos = $(canvas).offset();
+            _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
+            nearest = sys.nearest(_mouseP);
+
+            if (!nearest.node) return false
+
+              // console.info(nearest);
+
+            if (nearest.node.data.shape!='dot'){
+              selected = (nearest.distance < 50) ? nearest : null
+              if (selected){
+                 dom.addClass('linkable')
+                 window.status = selected.node.data.link.replace(/^\//,"http://"+window.location.host+"/").replace(/^#/,'')
+              }
+              else{
+                 dom.removeClass('linkable')
+                 window.status = ''
+              }
+            }else if ($.inArray(nearest.node.name, ['Learning Programs','About Us','Facilitation Services','demos']) >=0 ){
+              // if (nearest.node.name!=_section){
+              //   _section = nearest.node.name
+              //   that.switchSection(_section)
+              // }
+              // dom.removeClass('linkable')
+              // window.status = ''
+            }
+
+            return false
+          },
+          clicked:function(e){
+            console.info('click');
+            var pos = $(canvas).offset();
+            _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
+            nearest = dragged = sys.nearest(_mouseP);
+
+            if (nearest && selected && nearest.node===selected.node){
+              var link = selected.node.data.link
+              if (link.match(/^#/)){
+                 // $(that).trigger({type:"navigate", path:link.substr(1)})
+              }else{
+                 // window.location = link
+                 // $.magnificPopup.open({
+                 //    items: {
+                 //        src: link,
+                 //        type: 'ajax',
+                 //        settings: {
+                 //          // url: link
+                 //        }
+                 //      },
+                 //      callbacks: {
+                 //        parseAjax: function(mfpResponse) {
+                 //          // mfpResponse.data is a "data" object from ajax "success" callback
+                 //          // for simple HTML file, it will be just String
+                 //          // You may modify it to change contents of the popup
+                 //          // For example, to show just #some-element:
+                 //          mfpResponse.data = $(mfpResponse.data).find('#content');
+
+                 //          // mfpResponse.data must be a String or a DOM (jQuery) element
+
+                 //          // console.log('Ajax content loaded:', mfpResponse);
+                 //          // return
+                 //        },
+                 //        ajaxContentAdded: function() {
+                 //          // Ajax content is loaded and appended to DOM
+                 //          // console.log(this.content);
+                 //          $(document).foundation();
+                 //        }
+                 //      }
+                 //  });
+              }
+              return false
+            }
+
+
+            if (dragged && dragged.node !== null) dragged.node.fixed = true
+
+            $(canvas).unbind('mousemove', handler.moved);
+            $(canvas).bind('mousemove', handler.dragged)
+            $(window).bind('mouseup', handler.dropped)
+
+            return false
+          },
+          dragged:function(e){
+            var old_nearest = nearest && nearest.node._id
+            var pos = $(canvas).offset();
+            var s = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
+
+            if (!nearest) return
+            if (dragged !== null && dragged.node !== null){
+              var p = sys.fromScreen(s)
+              dragged.node.p = p
+            }
+
+            return false
+          },
+
+          dropped:function(e){
+            if (dragged===null || dragged.node===undefined) return
+            if (dragged.node !== null) dragged.node.fixed = false
+            dragged.node.tempMass = 1000
+            dragged = null;
+            // selected = null
+            $(canvas).unbind('mousemove', handler.dragged)
+            $(window).unbind('mouseup', handler.dropped)
+            $(canvas).bind('mousemove', handler.moved);
+            _mouseP = null
+            return false
+          }
+
+
+        }
+
+        $(canvas).mousedown(handler.clicked);
+        $(canvas).mousemove(handler.moved);
+
+      }
+    }
+
+    return that
+  }
+
+
+  var Nav = function(elt){
+    var dom = $(elt)
+
+    var _path = null
+
+    var that = {
+      init:function(){
+        $(window).bind('popstate',that.navigate)
+        dom.find('> a').click(that.back)
+        $('.more').one('click',that.more)
+
+        $('#docs dl:not(.datastructure) dt').click(that.reveal)
+        that.update()
+        return that
+      },
+      more:function(e){
+        $(this).removeAttr('href').addClass('less').html('&nbsp;').siblings().fadeIn()
+        $(this).next('h2').find('a').one('click', that.less)
+
+        return false
+      },
+      less:function(e){
+        var more = $(this).closest('h2').prev('a')
+        $(this).closest('h2').prev('a')
+        .nextAll().fadeOut(function(){
+          $(more).text('creation & use').removeClass('less').attr('href','#')
+        })
+        $(this).closest('h2').prev('a').one('click',that.more)
+
+        return false
+      },
+      reveal:function(e){
+        $(this).next('dd').fadeToggle('fast')
+        return false
+      },
+      back:function(){
+        _path = "/"
+        if (window.history && window.history.pushState){
+          window.history.pushState({path:_path}, "", _path);
+        }
+        that.update()
+        return false
+      },
+      navigate:function(e){
+        var oldpath = _path
+        if (e.type=='navigate'){
+          _path = e.path
+          if (window.history && window.history.pushState){
+             window.history.pushState({path:_path}, "", _path);
+          }else{
+            that.update()
+          }
+        }else if (e.type=='popstate'){
+          var state = e.originalEvent.state || {}
+          _path = state.path || window.location.pathname.replace(/^\//,'')
+        }
+        if (_path != oldpath) that.update()
+      },
+      update:function(){
+        var dt = 'fast'
+        if (_path===null){
+          // this is the original page load. don't animate anything just jump
+          // to the proper state
+          _path = window.location.pathname.replace(/^\//,'')
+          dt = 0
+          dom.find('p').css('opacity',0).show().fadeTo('slow',1)
+        }
+
+        switch (_path){
+          case '':
+          case '/':
+          dom.find('p').text('a graph visualization library using web workers and jQuery')
+          dom.find('> a').removeClass('active').attr('href','#')
+
+          $('#docs').fadeTo('fast',0, function(){
+            $(this).hide()
+            $(that).trigger({type:'mode', mode:'visible', dt:dt})
+          })
+          document.title = "arbor.js"
+          break
+
+          case 'introduction':
+          case 'reference':
+          $(that).trigger({type:'mode', mode:'hidden', dt:dt})
+          dom.find('> p').text(_path)
+          dom.find('> a').addClass('active').attr('href','#')
+          $('#docs').stop(true).css({opacity:0}).show().delay(333).fadeTo('fast',1)
+
+          $('#docs').find(">div").hide()
+          $('#docs').find('#'+_path).show()
+          document.title = "arbor.js Â» " + _path
+          break
+        }
+
+      }
+    }
+    return that
+  }
+
+  $(document).ready(function(){
+
+    $('nav').hide();
+
+    var CLR = {
+      branch:"#b2b19d",
+      code:"orange",
+      doc:"#922E00",
+      demo:"#a7af00",
+      gray: "#999999",
+      black: "#333333",
+      light: "#cccccc",
+      transparent: "transparent",
+
+      red: "#D40D28",
+      orange: "#D69126",
+      green: "#7BBE31",
+      blue: "#2ECCD8",
+      purple: "#5500D8",
+
+    }
+
+    var theUI = {
+      nodes:{"Community At Work":{color:CLR.black, shape:"dot", alpha:1, size: 2},
+
+
+
+
+
+             "About Us":{color:CLR.red, shape:"dot", alpha:1},
+                "Professional Staff":{color: CLR.gray},
+                "Operations Staff":{color: CLR.gray},
+                "The Company":{color: CLR.gray},
+                "Our Clients":{color: CLR.gray},
+                "Location &amp; Directions":{color: CLR.gray},
+                "Contact Us":{color: CLR.gray},
+             // atlas:{color:CLR.demo, alpha:0, link:'/atlas'},
+             // echolalia:{color:CLR.demo, alpha:0, link:'/echolalia'},
+
+             "Facilitation Services":{color:CLR.orange, shape:"dot", alpha:1},
+            {% for item in cms.facilitationservices %}
+             "{{ item.name }}":{color:CLR.gray, alpha:1, link: "{{ url(item) }}"},
+            {% endfor %}
+
+             "Learning Programs":{color:CLR.green, shape:"dot", alpha:1},
+             {% for category in cms.learningprogramscategories %}
+             "{{ category.name }}":{color:CLR.gray, alpha:1, link: "{{ url(category) }}"},
+            {% endfor %}
+
+              {% for item in cms.learningprograms %}
+               "{{ item.name }}":{color:CLR.transparent, alpha:1, link: "{{ url(item) }}"},
+              {% endfor %}
+
+             "Consulting Services":{color:CLR.blue, shape:"dot", alpha:1},
+             "case studies":{color:CLR.gray},
+             "testimonials":{color:CLR.gray},
+
+             "Resources":{color:CLR.purple, shape:"dot", alpha:1},
+              "Tools &amp; Methods": { color: CLR.gray},
+              "Website of the Month": { color: CLR.gray},
+              "Conference of the Month": { color: CLR.gray},
+              "Our Books &amp; Articles": { color: CLR.gray},
+              "Reading List": { color: CLR.gray},
+              "Participatory Organizations": { color: CLR.gray},
+
+            },
+      edges:{
+        "Community At Work":{
+          "About Us":{length:20},
+          "Facilitation Services":{length:20},
+          "Learning Programs":{length:20},
+          "Consulting Services":{length:20},
+          "Resources":{length:20}
+        },
+        "About Us":{
+            "Professional Staff": {length: 10},
+            "Operations Staff": {length: 10},
+            "The Company": {length: 10},
+            "Our Clients": {length: 10},
+            "Location &amp; Directions": {length: 10},
+            "Contact Us": {length: 10}
+        },
+        "Facilitation Services": {
+          {% for item in cms.facilitationservices %}"{{ item.name }}":{length:10}{% if !loop.last %},{% endif %}{% endfor %}
+        },
+        "Learning Programs":{
+          {% for category in cms.learningprogramscategories %}"{{ category.name }}":{length:10
+              // {% for item in category.learning_programs_category %}"{{ item.name }}":{}{% if !loop.last %},{% endif %}{% endfor %}
+           }{% if !loop.last %},{% endif %}
+          {% endfor %}
+        },
+        {% for category in cms.learningprogramscategories %}"{{ category.name }}":{
+              {% for item in category.learning_programs_category %}"{{ item.name }}":{length:10}{% if !loop.last %},{% endif %}{% endfor %}
+           },
+          {% endfor %}
+        "Resources":{
+          "Tools &amp; Methods": { length: 10},
+          "Website of the Month": { length: 10},
+          "Conference of the Month": { length: 10},
+          "Our Books &amp; Articles": { length: 10},
+          "Reading List": { length: 10},
+          "Participatory Organizations": { length: 10}
+        },
+        "Consulting Services": {
+          "case studies": {length: 10},
+          "testimonials": {length: 10}
+        }
+      }
+    }
+
+
+    var sys = arbor.ParticleSystem()
+    // sys.parameters({stiffness:900, repulsion:5000, gravity:false, dt:0.015})
+    sys.parameters({repulsion:10000, siffness: 0})
+    sys.renderer = Renderer("#arbor-js")
+    sys.graft(theUI)
+
+    var nav = Nav("#nav")
+    $(sys.renderer).bind('navigate', nav.navigate)
+    $(nav).bind('mode', sys.renderer.switchMode)
+    nav.init()
+  })
+})(this.jQuery)
+    </script>
+{% endblock scripts_extra %}
