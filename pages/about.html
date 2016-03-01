@@ -23,15 +23,16 @@
 
     <div class="row small-up-1 medium-up-2 large-up-4">
       {% for item in cms.staff %}
-        <a href="{{ url(item) }}"></a>
-          <div class="columns text-center staff">
+        <a href="{{ url(item) }}" class="columns text-center staff" style="color:inherit">
+          <!-- <div class="columns text-center staff"> -->
             <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
             <h3>{{ item.name }}</h3>
-            <h5 class="text-gray">Person Title</h5>
+            <h5 class="text-gray">{{ item.title }}</h5>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, doloribus.
+              {{ item.overview }}
             </p>
-          </div>
+          <!-- </div> -->
+        </a>
       {% endfor %}
     </div>
   </section>

@@ -12,49 +12,30 @@
 {# This sets our page <title>. It will append this staff's name to the site title defined in base.html #}
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
 {% block content %}
-  <p><a href="{{ url('staff') }}">View a list of all staff</a></p>
-  <h1>{{ item.name }}</h1>
-  <ul>
-      <li>
-        <strong>Name: </strong>
-        {{ item.name }}
-      </li>
-      <li>
-        <strong>Create Date: </strong>
-        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
-        {{ item.create_date|date('F d Y') }}
-      </li>
-      <li>
-        <strong>Last Updated: </strong>
-        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
-        {{ item.last_updated|date('F d Y') }}
-      </li>
-      <li>
-        <strong>Publish Date: </strong>
-        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
-        {{ item.publish_date|date('F d Y') }}
-      </li>
-      <li>
-        <strong>Image: </strong>
-        {# You can pull out a lot more information from the image property. Info here: #}
-        {# http://www.webhook.com/docs/widget-template-reference/#image #}
-        <img src="{{ item.image|imageSize(200, 200) }}" />
-      </li>
-      <li>
-        <strong>Title: </strong>
-        {{ item.title }}
-      </li>
-      <li>
-        <strong>Overview: </strong>
-        {{ item.overview }}
-      </li>
-      <li>
-        <strong>Bio: </strong>
+  <section class="padding-tall" style="padding-bottom: 4em;">
+    <div class="row" data-equalizer>
+      <div class="columns medium-4" data-equalizer-watch>
+        <img src="{{ item.image|imageCrop(300, 300) }}" class="img-circle" style="width: 90%;"/>
+      </div>
+      <div class="columns medium-8" data-equalizer-watch>
+        <div class="table">
+          <div class="cell">
+            <h1>{{ item.name }}</h1>
+            <h3 class="subdued">{{ item.title }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="padding-tall" style="padding-top: 0;">
+    <div class="row">
+      <div class="columns medium-8 medium-centered">
         {{ item.bio|markdown }}
-      </li>
-      <li>
-        <strong>Email: </strong>
-        {{ item.email }}
-      </li>
-  </ul>
+        <br>
+        <a class="button outline" href="/about">&larr; About Comunity At Work </a>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}
