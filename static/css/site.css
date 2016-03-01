@@ -254,14 +254,22 @@ nav ul > li > ul > li {
   margin-bottom: 1em;
 }
 nav h4 {
-  font-size: 2.2em;
+  font-size: 1.5em;
   margin-bottom: 0.7em;
   white-space: pre;
-  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.5;
+}
+nav h4 img {
+  height: 1.5em;
+  width: 1.5em;
+  vertical-align: bottom;
+  margin-right: 0.5em;
 }
 @media (max-width: 480px) {
   nav h4 {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 }
 nav h4,
@@ -492,6 +500,13 @@ nav .menu-toggle i {
 /* footer */
 #map h1 {
   font-size: 2em;
+  line-height: 1.5;
+}
+#map h1 img {
+  height: 1.5em;
+  width: 1.5em;
+  margin-right: 0.5em;
+  vertical-align: bottom;
 }
 #map ul {
   list-style: none;
