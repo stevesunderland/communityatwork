@@ -1,15 +1,15 @@
-<section class="bg-dark cover" data-bg="/static/images/image-1.jpg">
-  <div class="overlay">
-    <div class="row">
-      <div class="columns padding-tall text-center">
-        <h2 class="bold">We're acknowledged experts in our field.</h2>
-        <br>
-        <p class="lead">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, molestiae voluptatum maiores eum fugiat laboriosam officia alias, doloribus tempore quos provident, expedita praesentium. Expedita ut itaque incidunt totam culpa in.
-        </p>
-        <br>
-        <a href="#" class="button outline white">Learn more about what we do <i class="icon-arrow-right"></i> </a>
+<section class="bg-dark cover" data-bg="{{ cms.homepage.about_image|imageCrop(1200,600) }}">
+    <div class="overlay">
+      <div class="row">
+        <div class="columns padding-tall text-center">
+          <h2 class="bold">{{ cms.homepage.about_headline }}</h2>
+          <br>
+          <p class="lead">
+            {{ cms.homepage.about_overview }}
+          </p>
+          <br>
+          <a href="#" class="button outline white">{{ cms.homepage.about_button_text }} <i class="icon-arrow-right"></i> </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>

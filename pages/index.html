@@ -25,8 +25,10 @@
         <div class="table">
           <div id="particles-js"></div>
           <div class="cell text-center padding-tall">
-            <h1>Community At Work</h1>
-            <p class="lead">Supporting groups to do their best thinking.</p>
+            <div style="display: block; max-width: 30em; margin: 0 auto;">
+              <h1 style="">{{ cms.homepage.headline }}</h1>
+              <p class="lead">{{ cms.homepage.overview }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -35,39 +37,21 @@
 
   <section class="grid">
     <div class="row expanded collapse small-up-1 medium-up-2 large-up-3" data-equalizer>
-        <div class="columns text-center" data-equalizer-watch data-bg="/static/images/illustration-05.svg">
-          <a href="{{ url('learningprograms') }}">
-            <div class="overlay padding-tall">
-              <div class="table">
-                <div class="cell">
-                  <h3 class="bold text-white">Learning Programs</h3>
+
+        {% for item in cms.homepage.grid|slice(0,3) %}
+          <div class="columns text-center cover" data-equalizer-watch data-bg="{{ item.image|imageCrop(400,300) }}">
+            <a href="{{ item.link }}">
+              <div class="overlay padding-tall">
+                <div class="table">
+                  <div class="cell">
+                    <h3 class="bold text-white">{{ item.name }}</h3>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-        </div>
-        <div class="columns text-center" data-equalizer-watch data-bg="/static/images/illustration-01.svg">
-          <a href="{{ url('facilitationservices') }}">
-            <div class="overlay padding-tall">
-              <div class="table">
-                <div class="cell">
-                  <h3 class="bold text-white">Facilitation Services</h3>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="columns text-center" data-equalizer-watch data-bg="/static/images/illustration-06.svg">
-          <a href="{{ url('consultingservices') }}">
-            <div class="overlay padding-tall">
-              <div class="table">
-                <div class="cell">
-                  <h3 class="bold text-white">Consulting Services</h3>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
+            </a>
+          </div>
+        {% endfor %}
+
     </div>
   </section>
 
@@ -78,15 +62,12 @@
       </div>
       <div class="columns medium-6">
         <div class="space show-for-small-only" style="display:block;height:2em;"></div>
-        <h2 class="bold" style="line-height: 1;">Authors of the all-time best&nbsp;seller</h2>
+        <h2 class="bold" style="line-height: 1;">{{ cms.homepage.book_headline }}</h2>
         <br>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, molestiae voluptatum maiores eum fugiat laboriosam officia alias, doloribus tempore quos provident, expedita praesentium. Expedita ut itaque incidunt totam culpa in.
-        </p>
+        {{ cms.homepage.book_overview|safe }}
         <br>
         <div>
-          <a href="{{ url('booksarticles') }}" class="button">Our Books &amp; Articles <i class="icon-arrow-right"></i> </a>
-          <!-- <a href="{{ url('booksarticles') }}" class="button outline">Books &amp; Articles <i class="icon-arrow-right"></i> </a> -->
+          <a href="{{ url('booksarticles') }}" class="button">{{ cms.homepage.book_button_text }} <i class="icon-arrow-right"></i> </a>
         </div>
       </div>
     </div>
