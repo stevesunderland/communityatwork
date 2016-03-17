@@ -20,7 +20,7 @@
           <h6><a href="{{ url('facilitationservices') }}" class="button link" style="padding-left: 0; color: #fff;"><i class="icon-arrow-left"></i> Facilitation Services</a></h6>
           <h1>{{ item.name }}</h1>
           <p class="lead" style="font-size: 1em;">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet inventore architecto, et delectus alias doloremque sed ea veritatis at culpa sit, quidem quas quia non explicabo quis voluptatibus cum reiciendis.
+            {{Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet inventore architecto, et delectus alias doloremque sed ea veritatis at culpa sit, quidem quas quia non explicabo quis voluptatibus cum reiciendis.}}
           </p>
         </div>
       </div>
@@ -44,9 +44,11 @@
       <div class="columns medium-6" data-equalizer-watch>
         <div class="table">
           <div class="cell">
-            <p class="lead">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet inventore architecto, et delectus alias doloremque sed ea veritatis at culpa sit, quidem quas quia non explicabo quis voluptatibus cum reiciendis.
-            </p>
+            {# <p class="lead"> #}
+            <span class="lead">
+              {{ item.overview|safe }}
+            </span>
+            {# </p> #}
           </div>
         </div>
       </div>
