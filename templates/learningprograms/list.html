@@ -44,7 +44,7 @@
               <h2>{{ category.name }}</h2>
               <br>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus corporis, velit dicta repellat vitae recusandae consectetur voluptate quod accusamus eveniet debitis autem perspiciatis, assumenda tempora sint blanditiis maxime molestiae quidem.
+                {{ category.summary }}
               </p>
 
             </div>
@@ -64,7 +64,7 @@
                   <div class="card" data-equalizer-watch>
                     <h3><a href="{{ url(item) }}">{{ item.name }}</a></h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia expedita, quaerat deserunt. Neque quod harum voluptates.
+                      {{ item.overview }}
                     </p>
                     <p class="text-right">
                       <a href="{{ url(item) }}" class="button link" style="padding-right: 0;">Learn More <i class="icon-arrow-right"></i></a>
