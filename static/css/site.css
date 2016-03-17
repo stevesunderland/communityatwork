@@ -141,6 +141,10 @@ dl dd {
 a:hover {
   color: #222;
 }
+.text-columns-3 {
+  -webkit-column-count: 3;
+  -column-count: 3;
+}
 input[type="text"],
 input[type="email"],
 input[type="phone"],
@@ -429,7 +433,7 @@ nav .menu-toggle i {
   }
 }
 .padding-tall {
-  padding: 6em 50px 6em;
+  padding: 7em 50px 7em;
 }
 @media (max-width: 480px) {
   .padding-tall {
@@ -461,7 +465,7 @@ nav .menu-toggle i {
   margin-top: 1em;
 }
 #hero p.lead {
-  font-size: 1em;
+  font-size: 1.1em;
   line-height: 1.5;
 }
 @media (max-width: 480px) {
@@ -583,22 +587,20 @@ nav .menu-toggle i {
   background-color: #ddd;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 100% auto;
+  background-size: auto 80%;
   transition: all 0.5s;
-  // padding: 10em 1em;
 }
 .grid .columns:nth-child(even) {
   background-color: #ccc;
 }
 .grid .columns:hover {
-  background-size: 120% auto;
+  background-size: auto 120%;
 }
 .grid .overlay {
   background-color: rgba(110, 110, 110, 0.6);
   height: 100%;
   width: 100%;
   transition: all 0.5s;
-  padding: 8em 1em;
 }
 .grid .overlay * {
   color: #fff;
@@ -653,6 +655,9 @@ blockquote p.caption {
 }
 .slick-dots {
   bottom: -100px;
+}
+#clients ul {
+  list-style: none;
 }
 .services ul {
   font-size: 1.5em;
