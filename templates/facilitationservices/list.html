@@ -42,9 +42,7 @@
             <div class="table">
               <div class="cell">
                 <h2 style="margin-bottom: 1em;"><a href="{{ url(item) }}" style="color: inherit;">{{ item.name }}</a></h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias distinctio laborum debitis error, ipsum consequatur, a deleniti inventore, nisi obcaecati magni vitae saepe optio accusamus laudantium itaque? Dicta asperiores, ad.
-                </p>
+                {{ item.overview|safe }}
                 <br>
                 <p>
                   <a href="{{ url(item) }}" class="button outline">Read More <i class="icon-arrow-right"></i> </a>

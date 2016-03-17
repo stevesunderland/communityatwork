@@ -587,14 +587,14 @@ nav .menu-toggle i {
   background-color: #ddd;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: auto 80%;
+  background-size: 100% auto;
   transition: all 0.5s;
 }
 .grid .columns:nth-child(even) {
   background-color: #ccc;
 }
 .grid .columns:hover {
-  background-size: auto 120%;
+  background-size: 120% auto;
 }
 .grid .overlay {
   background-color: rgba(110, 110, 110, 0.6);
