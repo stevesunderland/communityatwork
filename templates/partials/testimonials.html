@@ -1,18 +1,24 @@
-<section class="bg-haze padding-tall">
-    <div class="row">
-      <div class="columns">
-        <div class="carousel">
-          {% for item in cms.testimonials %}
-            <div class="slide text-center">
-              {# <img src="http://placehold.it/100x100" alt="" class="img-circle" style="margin-bottom: 2em;"> #}
-              <blockquote>
-                <p class="lead"><span>&ldquo; </span> {{ item.quote }} <span>&rdquo;</span></p>
-                <br>
-                <p class="caption">{{ item.name }}</p>
-              </blockquote>
+<section class="bg-haze padding">
+  <div class="row">
+    <div class="columns">
+      <div class="carousel" data-equalizer>
+        {% for item in cms.testimonials %}
+          <div class="slide text-center" data-equalizer-watch>
+            {# <img src="http://placehold.it/100x100" alt="" class="img-circle" style="margin-bottom: 2em;"> #}
+            <div class="table">
+              <div class="cell">
+                <div style="padding: 0 5em;">
+                  <blockquote>
+                    <p class="lead"><span>&ldquo; </span> {{ item.quote }} <span>&rdquo;</span></p>
+                    <br>
+                    <p class="caption" style="margin-bottom: 0;">{{ item.name }}</p>
+                  </blockquote>
+                </div>
+              </div>
             </div>
-          {% endfor %}
-        </div>
+          </div>
+        {% endfor %}
       </div>
     </div>
-  </section>
+  </div>
+</section>
