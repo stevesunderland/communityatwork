@@ -123,12 +123,43 @@ body {
 nav {
 	background-color: #222;
 	background-color: fade(#000, 90%);
-	padding: 1em;
+	padding: 2em;
 	overflow: hidden;
 	transition: all 0.5s;
 
 
 	cursor: pointer;
+
+	h4 {
+		a {
+			background-image: url('/static/images/community-at-work-icon-gradient.svg');
+			background-size: auto 90%;
+			background-repeat: no-repeat;
+			background-position: left center;
+			padding: 0.5em 0 0.5em 3em;
+		}
+	}
+
+	.index & {
+		background-color: transparent !important;
+
+		a {
+			color: #222;
+		}
+
+		h4 {
+			a {
+				background-image: url('/static/images/community-at-work-icon-gradient.svg');
+			}
+		}
+
+		&:hover {
+			background-color: #222 !important;
+			a {
+				color: #fff;
+			}
+		}
+	}
 
 	#footer & {
 		background-color: @primary;
@@ -141,7 +172,7 @@ nav {
 			.fade-in;
 			animation-delay: 0.5s;
 		}
-		height: 4.4em;
+		height: 6em;
 		background-color: #222;
 		position: fixed;
 		top: 0; right: 0;
@@ -297,6 +328,9 @@ nav {
 	h3 {
 		color: #999;
 		margin-bottom: 1em;
+		margin-top: 1em;
+		margin-left: 2.3em;
+		line-height: 1.1;
 	}
 	&.transparent {
 		h3, h4, a {
@@ -392,6 +426,10 @@ nav {
 				display: none;
 			}
 		}
+	}
+
+	.social {
+		margin-left: 2.3em;
 	}
 }
 
@@ -532,7 +570,7 @@ nav {
 	}
 
 	p.lead {
-		font-size: 1.1em;
+		font-size: 1em;
 		line-height: 1.5;
 	}
 	@media(max-width: 480px) {
@@ -985,7 +1023,7 @@ i.icon-arrow-left, i.icon-arrow-right {
   width: 100%;
   height: 100%;
   // background-color: #b61924;
-  background-color: #eee;
+  background-color: #fff;
   background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
