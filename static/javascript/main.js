@@ -222,6 +222,7 @@ $(window).on('resize', function(){
 
 $(function() {
   $.selz({
+      //
       theme: {
         button: {
           bg:             "#5fa9df",

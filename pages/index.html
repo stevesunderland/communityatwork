@@ -161,24 +161,7 @@
 
   {% include 'templates/partials/testimonials.html' %}
 
-  <section class="padding-tall" id="clients">
-    {# <h2 class="text-center" style="margin-bottom: 2em;">Clients</h2> #}
-    <p class="lead text-center">
-      We have taught group facilitation skills to clients from hundreds of organizations
-    </p>
-    <div class="space" style="display:block;height:4em;"></div>
-{#     <div class="row medium-up-3 large-up-5">
-      {% for item in [1,2,3,4,5] %}
-        <div class="columns text-center">
-          <img data-src="http://placehold.it/100x100" alt="" class="img-circle">
-          <h2>&nbsp;</h2>
-        </div>
-      {% endfor %}
-    </div> #}
-    <div class="row column text-columns-3">
-      {{ cms.homepage.client_list|safe }}
-    </div>
-  </section>
+  {% include 'templates/partials/clients-logos.html' %}
 
 {% endblock %}
 
