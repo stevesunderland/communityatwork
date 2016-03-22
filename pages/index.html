@@ -75,6 +75,32 @@
 
   {% include 'templates/partials/experts.html' %}
 
+  <section class="padding-tall">
+    <h2 class="text-center" style="margin-bottom: 2em;">Upcoming Workshops</h2>
+    <div class="row expanded medium-up-2 large-up-4" data-equalizer>
+      {% for item in cms.events|slice(0,4) %}
+        <div class="columns">
+          <div class="card" data-equalizer-watch>
+            <a href="{{ url(item) }}">
+              <h3>{{ item.name }}</h3>
+              <br>
+              <p class="text-right">
+                <a href="{{ url(item) }}" class="button link small">Learn More <i class="icon-arrow-right"></i> </a>
+              </p>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      <div class="columns text-center padding" style="padding-bottom: 0;">
+        <h3>
+          <a href="/events/">View All Workshops&nbsp;&amp;&nbsp;Events <i class="icon-arrow-right"></i></a>
+        </h3>
+      </div>
+    </div>
+  </section>
+
   <section class="padding-tall bg-haze">
     <h2 class="text-center" style="margin-bottom: 2em;">Learning Programs</h2>
     <div class="row expanded medium-up-2 large-up-4" data-equalizer>
