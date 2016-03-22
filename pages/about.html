@@ -17,13 +17,33 @@
     </div>
   </section>
 
-  <section class="padding-tall" id="professional-staff">
+  <section class="padding-tall bg-haze" id="professional-staff">
 
     <h2 class="text-center" style="margin-bottom: 2em;">Professional Staff</h2>
 
-    <div class="row small-up-1 medium-up-2 large-up-4">
-      {% for item in cms.staff %}
+    <div class="row small-up-1 medium-up-3 large-up-3">
+      {% for item in cms.staff|where('category', 'Professional Staff') %}
         <a href="{{ url(item) }}" class="columns text-center staff" style="color:inherit">
+          <!-- <div class="columns text-center staff"> -->
+            <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
+            <h3>{{ item.name }}</h3>
+            <h5 class="text-gray">{{ item.title }}</h5>
+            <p>
+              {{ item.overview }}
+            </p>
+          <!-- </div> -->
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="padding-tall" id="operations-staff">
+
+    <h2 class="text-center" style="margin-bottom: 2em;">Associates</h2>
+
+    <div class="row small-up-1 medium-up-3 large-up-3">
+      {% for item in cms.staff|where('category', 'Associates') %}
+          <a href="{{ url(item) }}" class="columns text-center staff" style="color:inherit">
           <!-- <div class="columns text-center staff"> -->
             <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
             <h3>{{ item.name }}</h3>
@@ -41,15 +61,17 @@
     <h2 class="text-center" style="margin-bottom: 2em;">Operations Staff</h2>
 
     <div class="row small-up-1 medium-up-3 large-up-3">
-      {% for item in [1,2,3,4,5,6] %}
-          <div class="columns text-center staff">
-            <img data-src="http://placehold.it/150x150" alt="" class="img-circle">
-            <h3>Person Name</h3>
-            <h5 class="text-gray">Person Title</h5>
+      {% for item in cms.staff|where('category', 'Operations Staff') %}
+          <a href="{{ url(item) }}" class="columns text-center staff" style="color:inherit">
+          <!-- <div class="columns text-center staff"> -->
+            <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
+            <h3>{{ item.name }}</h3>
+            <h5 class="text-gray">{{ item.title }}</h5>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, doloribus.
+              {{ item.overview }}
             </p>
-          </div>
+          <!-- </div> -->
+        </a>
       {% endfor %}
     </div>
   </section>

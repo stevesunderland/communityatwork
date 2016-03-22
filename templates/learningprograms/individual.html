@@ -24,8 +24,59 @@
           {{ item.overview }}
         </h4>
         <br>
-        <br>
-        <div class="callout">
+
+
+
+        {% if item.events_relationship %}
+          <hr>
+          <br>
+          <h2>Upcoming Events</h2>
+          <br>
+
+          {% for event in item.events_relationship %}
+            <div class="bg-haze event-item" style="padding: 1em; margin-bottom: 1em;">
+              <div class="row">
+                <div class="column medium-3">
+                  <h6 style="text-transform: uppercase; font-weight: bold; margin-top: 0.5em;">
+                    {% if event.end_date %}
+                      {{ event.start_date|date('F j') }} - {{ event.end_date|date('j, Y') }}
+                    {% else %}
+                      {{ event.start_date|date('F j, Y') }}
+                    {% endif %}
+                  </h6>
+                </div>
+                <div class="column medium-6">
+                  <p style="margin-bottom: 0.5em;">
+                    <em>with</em>
+                    {% for leader in event.leader %}
+                      <a href="{{ url(leader) }}" style="font-family: inherit; color: inherit; text-decoration: underline;">{{ leader.name }}</a>{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                  </p>
+                  {# <p> #}
+                    <small>{{ event.location|safe }}</small>
+                  {# </p> #}
+
+                  {% if event.eligibility %}
+                      <p><small>{{ event.eligibility }}</small></p>
+                  {% endif %}
+
+                  {% if event.cost %}
+                      <p><small>${{ event.cost }}</small></p>
+                  {% endif %}
+                </div>
+                <div class="column medium-3">
+                  {# {% if item.buy_link %} #}
+                    <a href="#" class="button expanded small">Register Now</a>
+                  {# {% endif %} #}
+                  <a href="mailto:events@communityatwork.com" class="button expanded small outline">Contact Us</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+        {% endif %}
+
+{#         <div class="callout">
           <div class="row" data-equalizer>
             <div class="columns medium-6" data-equalizer-watch>
               <div class="table">
@@ -46,7 +97,7 @@
             </div>
           </div>
           <br>
-        </div>
+        </div> #}
         <br>
         <hr>
         <br>

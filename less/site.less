@@ -25,7 +25,7 @@
   animation-duration: 1s;
 }
 
-h1, h2, h3, h4, h5, h6, p.lead, ul, li, dl, dt, dd, a, input[type="text"], input[type="email"], input[type="submit"], textarea {
+h1, h2, h3, h4, h5, h6, p.lead, ul, li, dl, dt, dd, a, input[type="text"], input[type="email"], input[type="submit"], textarea, table th {
 	font-family: "brandon-grotesque", sans-serif;
 
 	.wf-loading & {
@@ -1035,4 +1035,55 @@ i.icon-arrow-left, i.icon-arrow-right {
   canvas {
   	opacity: 0.2;
   }
+}
+
+
+
+
+
+#events {
+	table {
+		margin-top: 2em;
+		width: 100%;
+
+		tbody {
+			border: none;
+		}
+
+		tr {
+			background-color: transparent;
+
+			th {
+				// padding: 0;
+				vertical-align: top;
+				text-align: right;
+				text-transform: uppercase;
+				color: #999;
+				// margin-top: 0.5em;
+				padding-top: 1em;
+				padding-bottom: 0;
+				letter-spacing: .1em;
+			}
+			td {
+				padding-bottom: 0;
+				p {
+					margin-bottom: 0;
+				}
+				a:not(.button) {
+					font-family: inherit;
+					color: inherit;
+					text-decoration: underline;
+				}
+				.button {
+					margin-top: 2em;
+				}
+			}
+		}
+	}
+}
+
+.event-item {
+	p {
+		margin-bottom: 0;
+	}
 }

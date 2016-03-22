@@ -32,7 +32,8 @@ a,
 input[type="text"],
 input[type="email"],
 input[type="submit"],
-textarea {
+textarea,
+table th {
   font-family: "brandon-grotesque", sans-serif;
 }
 .wf-loading h1,
@@ -51,7 +52,8 @@ textarea {
 .wf-loading input[type="text"],
 .wf-loading input[type="email"],
 .wf-loading input[type="submit"],
-.wf-loading textarea {
+.wf-loading textarea,
+.wf-loading table th {
   visibility: hidden;
 }
 h1 .wf-active,
@@ -71,6 +73,7 @@ input[type="text"] .wf-active,
 input[type="email"] .wf-active,
 input[type="submit"] .wf-active,
 textarea .wf-active,
+table th .wf-active,
 h1 .wf-inactive,
 h2 .wf-inactive,
 h3 .wf-inactive,
@@ -87,7 +90,8 @@ a .wf-inactive,
 input[type="text"] .wf-inactive,
 input[type="email"] .wf-inactive,
 input[type="submit"] .wf-inactive,
-textarea .wf-inactive {
+textarea .wf-inactive,
+table th .wf-inactive {
   visibility: visible;
 }
 h1 {
@@ -818,4 +822,40 @@ i.icon-arrow-right {
 }
 #particles-js canvas {
   opacity: 0.2;
+}
+#events table {
+  margin-top: 2em;
+  width: 100%;
+}
+#events table tbody {
+  border: none;
+}
+#events table tr {
+  background-color: transparent;
+}
+#events table tr th {
+  vertical-align: top;
+  text-align: right;
+  text-transform: uppercase;
+  color: #999;
+  padding-top: 1em;
+  padding-bottom: 0;
+  letter-spacing: .1em;
+}
+#events table tr td {
+  padding-bottom: 0;
+}
+#events table tr td p {
+  margin-bottom: 0;
+}
+#events table tr td a:not(.button) {
+  font-family: inherit;
+  color: inherit;
+  text-decoration: underline;
+}
+#events table tr td .button {
+  margin-top: 2em;
+}
+.event-item p {
+  margin-bottom: 0;
 }
