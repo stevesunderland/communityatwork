@@ -823,16 +823,20 @@ i.icon-arrow-right {
 #particles-js canvas {
   opacity: 0.2;
 }
+.event-single table,
 #events table {
   margin-top: 2em;
   width: 100%;
 }
+.event-single table tbody,
 #events table tbody {
   border: none;
 }
+.event-single table tr,
 #events table tr {
   background-color: transparent;
 }
+.event-single table tr th,
 #events table tr th {
   vertical-align: top;
   text-align: right;
@@ -842,17 +846,21 @@ i.icon-arrow-right {
   padding-bottom: 0;
   letter-spacing: .1em;
 }
+.event-single table tr td,
 #events table tr td {
   padding-bottom: 0;
 }
+.event-single table tr td p,
 #events table tr td p {
   margin-bottom: 0;
 }
+.event-single table tr td a:not(.button),
 #events table tr td a:not(.button) {
   font-family: inherit;
   color: inherit;
   text-decoration: underline;
 }
+.event-single table tr td .button,
 #events table tr td .button {
   margin-top: 2em;
 }
