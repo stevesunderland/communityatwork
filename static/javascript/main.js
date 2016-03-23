@@ -62,6 +62,9 @@ var Site = {
 
 		$(window).scroll(function(){
 
+      // remove transparency on scroll
+      $('#header nav').removeClass('transparent');
+
       $('#header nav').removeClass('hover');
       $('#header nav').addClass('notoggle');
       $('#header nav').height($navHeight);
@@ -74,6 +77,12 @@ var Site = {
 			} else {
 				// $('nav').removeClass('transparent');
 			}
+
+      if ( offset == 0 && $('body').hasClass('index') ) {
+        $('nav').addClass('transparent');
+      } else {
+        $('nav').removeClass('transparent');
+      }
 
       // hide top nav if footer is present
       if ( $('#footer nav').visible() ) {

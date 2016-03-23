@@ -174,19 +174,19 @@ nav h4 a {
   background-position: left center;
   padding: 0.5em 0 0.5em 3em;
 }
-.index nav {
+nav.transparent {
   background-color: transparent !important;
 }
-.index nav a {
+nav.transparent a {
   color: #222;
 }
-.index nav h4 a {
+nav.transparent h4 a {
   background-image: url('/static/images/community-at-work-icon-gradient.svg');
 }
-.index nav:hover {
+nav.transparent:hover {
   background-color: #222 !important;
 }
-.index nav:hover a {
+nav.transparent:hover a {
   color: #fff;
 }
 #footer nav {
