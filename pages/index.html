@@ -82,6 +82,13 @@
         <div class="columns">
           <div class="card" data-equalizer-watch>
             <a href="{{ url(item) }}">
+              <h6 style="text-transform: uppercase; color: #999;font-weight: bold;letter-spacing: .05em;">
+                {% if item.end_date %}
+                  {{ item.start_date|date('F j') }} - {{ item.end_date|date('j, Y') }}
+                {% else %}
+                  {{ item.start_date|date('F j, Y') }}
+                {% endif %}
+              </h6>
               <h3>{{ item.name }}</h3>
               <br>
               <p class="text-right">
