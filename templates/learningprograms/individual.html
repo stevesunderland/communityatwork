@@ -1,16 +1,7 @@
-{# ------------------------------------------------------- #}
-{# INDIVIDUAL VIEW FOR EACH learningprograms #}
-{# This page can use any data from http:localhost:2000/cms/#/form/learningprograms/ #}
-{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
-{# http://paularmstrong.github.io/swig/docs/tags/ #}
-{# Learn about calling data into Webhook pages here: #}
-{# http://www.webhook.com/docs/template-rules-and-filters/ #}
-{# ------------------------------------------------------- #}
-{# Confused what extends and blocks do? Watch a primer: #}
-{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
 {% extends "templates/partials/base.html" %}
-{# This sets our page <title>. It will append this learningprograms's name to the site title defined in base.html #}
+
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
+
 {% block content %}
 
   <section class="padding-tall">
@@ -26,9 +17,6 @@
         <br>
 
         {% include 'templates/partials/share.html' %}
-
-        <script src="/static/javascript/shr.js"></script>
-        <script>shr.setup();</script>
 
         {% if item.events_relationship %}
           <hr>
@@ -55,9 +43,8 @@
                       <a href="{{ url(leader) }}" style="font-family: inherit; color: inherit; text-decoration: underline;">{{ leader.name }}</a>{% if not loop.last %},{% endif %}
                     {% endfor %}
                   </p>
-                  {# <p> #}
-                    <small>{{ event.location|safe }}</small>
-                  {# </p> #}
+
+                  <small>{{ event.location|safe }}</small>
 
                   {% if event.eligibility %}
                       <p><small>{{ event.eligibility }}</small></p>
@@ -79,28 +66,6 @@
 
         {% endif %}
 
-{#         <div class="callout">
-          <div class="row" data-equalizer>
-            <div class="columns medium-6" data-equalizer-watch>
-              <div class="table">
-                <div class="cell">
-                  <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem saepe quas, hic animi aliquid repellendus repellat necessitatibus.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="columns medium-6 text-right" data-equalizer-watch>
-              <div class="table">
-                <div class="cell">
-                  <a href="http://selz.co/1mpH7Xd" class="button">Register Now <i class="icon-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br>
-        </div> #}
         <br>
         <hr>
         <br>

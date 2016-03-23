@@ -6,23 +6,13 @@ var Site = {
 	},
 	carousel: function(){
 		$('.carousel').slick({
-			// autoplay: true,
-			// arrows: false,
 			dots: true
 		});
 	},
 	navigation: function() {
-		// var nav = $('nav');
-		// // set the position to fixed
-		// nav.css({ position: 'fixed', top: 0, left: 0, right: 0 });
-		// // add padding to body element to compensate for fixed nav
-		// var navheight = $('#nav').outerHeight()
-		// $('body').css({ paddingTop: navheight });
 
     var $navHeight = $('#header nav').height();
     var $navHeightExpanded = $('#footer nav').height();
-
-    //
 
     $('#header nav').hover(function(){
       $(this).addClass('hover');
@@ -52,7 +42,6 @@ var Site = {
         $(this).height($navHeight);
       }
 		});
-
 
 		// add transparent class
     var offset = $(window).scrollTop();
@@ -115,8 +104,6 @@ var Site = {
 
     var windowHeight = $(window).height();
     var controller = new ScrollMagic.Controller();
-
-    //
 
     var top = $('.parallax-top');
     var left = $('.parallax-left');
@@ -193,8 +180,6 @@ var Site = {
     // Hero section
 
     var hero = $('.hero');
-    // var row = hero.find('.row')
-    // var columns = hero.find('.columns')
     var cell = hero.find('.cell')
     var columns = hero.find('.columns')
     var topbar = $('top-bar.secondary')
@@ -225,13 +210,6 @@ $(document).ready(function(){
 $(window).on('resize', function(){
   Site.navigation();
 });
-
-
-// $.extend($.lazyLoadXT, {
-//   oncomplete: function() {
-//     $(document).foundation();
-//   }
-// });
 
 $(function() {
   $.selz({

@@ -1,20 +1,5 @@
-{# ------------------------------------------------------- #}
-
-{# LIST VIEW OF ALL facilitationservices #}
-
-{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
-{# http://paularmstrong.github.io/swig/docs/tags/ #}
-
-{# Learn about calling data into Webhook pages here: #}
-{# http://www.webhook.com/docs/template-rules-and-filters/ #}
-
-{# ------------------------------------------------------- #}
-
-{# Confused what extends and blocks do? Watch a primer: #}
-{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
 {% extends "templates/partials/base.html" %}
 
-{# This sets our page <title>. It will append facilitationservices to the site title defined in base.html #}
 {% block title %}{% parent %} - facilitationservices{% endblock %}
 
 {% block content %}
@@ -34,35 +19,29 @@
     </div>
   </section>
 
-    {% set icons = [9,5,6,2,1] %}
-    {% for item in cms.facilitationservices %}
-      <section class="padding {% if loop.index % 2 == 0 %}bg-haze{% endif %}">
-        <div class="row" data-equalizer>
-          <div class="column medium-6 {% if loop.index % 2 == 0 %}medium-push-6{% endif %}" data-equalizer-watch>
-            <div class="table">
-              <div class="cell">
-                <h2 style="margin-bottom: 1em;"><a href="{{ url(item) }}" style="color: inherit;">{{ item.name }}</a></h2>
-                {{ item.overview|safe }}
-                <br>
-                <p>
-                  <a href="{{ url(item) }}" class="button outline">Read More <i class="icon-arrow-right"></i> </a>
-                </p>
-
-              </div>
-            </div>
-          </div>
-          <div class="column medium-6 {% if loop.index % 2 == 0 %}medium-pull-6{% endif %}" data-equalizer-watch>
-            <div class="padding">
-              <!-- <img src="{{}}" alt=""> -->
-              <img src="/static/images/illustration-0{{ icons[loop.index0] }}.svg" alt="" class="">
+  {% set icons = [9,5,6,2,1] %}
+  {% for item in cms.facilitationservices %}
+    <section class="padding {% if loop.index % 2 == 0 %}bg-haze{% endif %}">
+      <div class="row" data-equalizer>
+        <div class="column medium-6 {% if loop.index % 2 == 0 %}medium-push-6{% endif %}" data-equalizer-watch>
+          <div class="table">
+            <div class="cell">
+              <h2 style="margin-bottom: 1em;"><a href="{{ url(item) }}" style="color: inherit;">{{ item.name }}</a></h2>
+              {{ item.overview|safe }}
+              <br>
+              <p>
+                <a href="{{ url(item) }}" class="button outline">Read More <i class="icon-arrow-right"></i> </a>
+              </p>
             </div>
           </div>
         </div>
-      </section>
-    {% endfor %}
-
-
-  {# The actual pagination template, feel free to edit or replace the default one. #}
-  {% include "templates/partials/paginator.html" %}
+        <div class="column medium-6 {% if loop.index % 2 == 0 %}medium-pull-6{% endif %}" data-equalizer-watch>
+          <div class="padding">
+            <img src="/static/images/illustration-0{{ icons[loop.index0] }}.svg" alt="" class="">
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
 
 {% endblock %}

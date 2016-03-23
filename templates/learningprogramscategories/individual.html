@@ -1,16 +1,7 @@
-{# ------------------------------------------------------- #}
-{# INDIVIDUAL VIEW FOR EACH learningprogramscategories #}
-{# This page can use any data from http:localhost:2000/cms/#/form/learningprogramscategories/ #}
-{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
-{# http://paularmstrong.github.io/swig/docs/tags/ #}
-{# Learn about calling data into Webhook pages here: #}
-{# http://www.webhook.com/docs/template-rules-and-filters/ #}
-{# ------------------------------------------------------- #}
-{# Confused what extends and blocks do? Watch a primer: #}
-{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
 {% extends "templates/partials/base.html" %}
-{# This sets our page <title>. It will append this learningprogramscategories's name to the site title defined in base.html #}
+
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
+
 {% block content %}
 
   <section id="hero" class="bg-haze">
@@ -26,20 +17,14 @@
     </div>
   </section>
 
-
-    {% for object in item.learning_programs_category %}
-      <section class="padding-tall {% if loop.index % 2 == 0 %}bg-haze{% endif %}">
-        <div class="row">
-          <div class="columns">
-            <h3><a href="{{ url(object) }}">{{ object.name }}</a></h3>
-          </div>
+  {% for object in item.learning_programs_category %}
+    <section class="padding-tall {% if loop.index % 2 == 0 %}bg-haze{% endif %}">
+      <div class="row">
+        <div class="columns">
+          <h3><a href="{{ url(object) }}">{{ object.name }}</a></h3>
         </div>
-      </section>
-    {% endfor %}
-
-
-
-
-  <!-- <p><a href="{{ url('learningprogramscategories') }}">View a list of all learningprogramscategories</a></p> -->
+      </div>
+    </section>
+  {% endfor %}
 
 {% endblock %}

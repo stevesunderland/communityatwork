@@ -1,30 +1,10 @@
-<nav id="nav" class="notoggle">
+<nav id="nav" class="notoggle {% if getCurrentUrl() == '/' %}transparent{% endif %}">
 	<div class="row expanded">
-	  <div class="columns medium-12 large-4">
+	  <div class="columns medium-12 large-5">
 	  	<div class="row">
 	  		<div class="columns small-8 medium-6 large-12">
 			    <h4><a href="/">Community At Work</a></h4>
-			    <h3 class="show-for-large">Supporting groups to do their best&nbsp;thinking.</h3>
-
-				<ul class="contact">
-					<li>
-
-					    <ul>
-					        <li class="map">
-					          <a href="https://goo.gl/maps/VwB9GA3wD9C2">
-					            1 Tubbs Street<br>
-					            San Francisco, CA 94107
-					          </a>
-					        </li>
-					        <li class="email">
-					          <a href="mailto:info@communityatwork.com">info@communityatwork.com</a>
-					        </li>
-					        <li class="phone">
-					          <a href="tel:4152829878">415.282.9878</a>
-					        </li>
-					      </ul>
-					</li>
-				</ul>
+			    <h3 class="show-for-large" style="margin-top: 1em;">Supporting groups to do their&nbsp;best&nbsp;thinking.</h3>
 	  		</div>
 	  		<div class="columns small-12 medium-6 large-12 show-for-large">
 			    <div class="social">
@@ -42,42 +22,10 @@
 	  	</div>
 
 	  </div>
-	  <div class="columns medium-12 large-8">
+	  <div class="columns medium-12 large-7">
 
-	    <ul class="row expanded small-up-1 medium-up-5">
-	      <li class="columns {% if getCurrentUrl() == url('about') %}active{% endif %}">
-	        <a href="/about/">About Us</a>
-	        <ul class="hide-for-small-only">
-	          <li>
-	            <a href="/about/#professional-staff">Professional Staff</a>
-	          </li>
-	          <li>
-	            <a href="/about/#operations-staff">Operations Staff</a>
-	          </li>
-	          <li>
-	            <a href="/about/#community-at-work">Community at Work</a>
-	          </li>
-	          <li>
-	            <a href="/about/#our-clients">Our Clients</a>
-	          </li>
-	          <li>
-	            <a href="{{ getCurrentUrl() }}#map">Location &amp; Directions</a>
-	          </li>
-	          <li>
-	            <a href="{{ getCurrentUrl() }}#map">Contact Us</a>
-	          </li>
-	        </ul>
-	      </li>
-	{#           <li class="columns">
-	        <a href="#">Books &amp; Articles</a>
-	        <ul>
-	          {% for item in cms.booksarticles %}
-	          <li>
-	            <a href="#">{{ item.name }}</a>
-	          </li>
-	        {% endfor %}
-	        </ul>
-	      </li> #}
+	    <ul class="row expanded small-up-1 medium-up-3">
+
 	      <li class="columns {% if getCurrentUrl() == url('facilitationservices') %}active{% endif %}">
 	        <a href="/facilitation-services/">Facilitation Services</a>
 
@@ -109,26 +57,8 @@
 	          <li><a href="/consultingservices/#testimonials">Client Testimonials</a></li>
 	        </ul>
 	      </li>
-	      <li class="columns {% if getCurrentUrl() == url('resources') %}active{% endif %}">
-	        <a href="/resources/">Resources</a>
-	        <ul class="hide-for-small-only">
-	          <li><a href="/resources/#">Tools &amp; Methods</a></li>
-	          <li><a href="/resources/#">Website of the Month</a></li>
-	          <li><a href="/resources/#">Conference of the Month</a></li>
-	          <li><a href="{{ url('booksarticles') }}">Our Books &amp; Articles</a></li>
-	          <li><a href="/resources/#">Reading List</a></li>
-	          <li><a href="/resources/#">Participatory Organizations</a></li>
-	        </ul>
-	      </li>
 	    </ul>
-<!-- 		<form action="/search-results/" class="search-form" method="get" data-search-index="false">
-			  <span class="search"><input type="text" placeholder="search" id="tipue_search_input" name="q"></span>
-		</form> -->
 	  </div>
-
-
-
-
 	</div>
 
 	<div class="row expanded hide-for-large">
@@ -147,5 +77,4 @@
 		    </div>
   		</div>
 	</div>
-	<!-- div.row> -->
 </nav>

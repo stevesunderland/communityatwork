@@ -1,20 +1,5 @@
-{# ------------------------------------------------------- #}
-
-{# LIST VIEW OF ALL booksarticles #}
-
-{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
-{# http://paularmstrong.github.io/swig/docs/tags/ #}
-
-{# Learn about calling data into Webhook pages here: #}
-{# http://www.webhook.com/docs/template-rules-and-filters/ #}
-
-{# ------------------------------------------------------- #}
-
-{# Confused what extends and blocks do? Watch a primer: #}
-{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
 {% extends "templates/partials/base.html" %}
 
-{# This sets our page <title>. It will append booksarticles to the site title defined in base.html #}
 {% block title %}{% parent %} - booksarticles{% endblock %}
 
 {% block content %}
@@ -44,7 +29,7 @@
               <h2 style="line-height: 1;">{{ item.name }}</h2>
               <br>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quas repellendus, illo et nobis cupiditate accusantium iure, tenetur quam minus nostrum quisquam facilis in adipisci ullam ipsam repellat id mollitia.
+                {{ item.summary|default('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quas repellendus, illo et nobis cupiditate accusantium iure, tenetur quam minus nostrum quisquam facilis in adipisci ullam ipsam repellat id mollitia.') }}
               </p>
               <br>
               <div>

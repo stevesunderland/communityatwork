@@ -145,9 +145,7 @@
           <div class="card" data-equalizer-watch>
             <a href="{{ url('learningprograms') }}#{{ item.slug|replace('learningprogramscategories/', '', 'g') }}">
               <h3>{{ item.name }}</h3>
-              {# <p> #}
                 {{ item.overview|safe }}
-              {# </p> #}
               <br>
               <p class="text-right">
                 <a href="{{ url('facilitationservices') }}#{{ item.slug|replace('facilitationservices/', '', 'g') }}" class="button link small">Learn More <i class="icon-arrow-right"></i> </a>

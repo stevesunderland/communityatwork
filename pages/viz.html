@@ -1,37 +1,10 @@
-{# ------------------------------------------------------- #}
-
-{# YOUR HOMEPAGE #}
-
-{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
-{# http://paularmstrong.github.io/swig/docs/tags/ #}
-
-{# Learn about calling data into Webhook pages here: #}
-{# http://www.webhook.com/docs/template-rules-and-filters/ #}
-
-{# ------------------------------------------------------- #}
-
-{# Confused what extends and blocks do? Watch a primer: #}
-{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
 {% extends "templates/partials/base.html" %}
 
-{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
 {% block title %}{% parent %} - Homepage{% endblock %}
 {% block body_attributes %}class="viz" style="background-color: #eee;"{% endblock body_attributes %}
 {% block content %}
 
-          <canvas id="arbor-js"></canvas>
-<!--   <section id="hero" class="" style="background-color: transparent;">
-    <div class="row expanded collapse">
-      <div class="columns">
-        <div class="table">
-          <div class="cell text-center padding-tall">
-            <h1>Community At Work</h1>
-            <p class="lead">Supporting groups to do their best thinking.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
+  <canvas id="arbor-js"></canvas>
 
 {% endblock %}
 
@@ -46,17 +19,9 @@
 
     <script>
 //
-// site.js
-//
-// the arbor.js website
-//
+// arbor.js
+////
 (function($){
-  // var trace = function(msg){
-  //   if (typeof(window)=='undefined' || !window.console) return
-  //   var len = arguments.length, args = [];
-  //   for (var i=0; i<len; i++) args.push("arguments["+i+"]")
-  //   eval("console.log("+args.join(",")+")")
-  // }
 
   var Renderer = function(elt){
     var dom = $(elt)
@@ -79,12 +44,6 @@
         $(window).resize(that.resize)
         that.resize()
         that._initMouseHandling()
-
-        if (document.referrer.match(/echolalia|atlas|halfviz/)){
-          // if we got here by hitting the back button in one of the demos,
-          // start with the demos section pre-selected
-          that.switchSection('demos')
-        }
       },
       resize:function(){
         canvas.width = $(window).width()
@@ -194,12 +153,6 @@
                  window.status = ''
               }
             }else if ($.inArray(nearest.node.name, ['Learning Programs','About Us','Facilitation Services','demos']) >=0 ){
-              // if (nearest.node.name!=_section){
-              //   _section = nearest.node.name
-              //   that.switchSection(_section)
-              // }
-              // dom.removeClass('linkable')
-              // window.status = ''
             }
 
             return false

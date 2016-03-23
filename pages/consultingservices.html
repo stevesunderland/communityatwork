@@ -9,7 +9,7 @@
           <div class="table">
             <div class="cell text-center padding-tall">
               <h1>{{ cms.consultingservices.name }}</h1>
-              <p class="lead">Some of our clients want help changing the culture of whole department or their entire organization – so they can move in the direction, for example, of adaptability, learning, teamwork, and collaboration. We build long-term client partnerships with these clients, we develop significant relationships, delivering services including group facilitation, individual coaching, initiative design, project planning and project management, mediation and conflict resolution.</p>
+              <p class="lead">{{ cms.consultingservices.overview }}</p>
             </div>
           </div>
         </div>
@@ -17,17 +17,18 @@
     </div>
   </section>
 
-  <!-- <section class="padding-tall" id="philosophy">
+  <section class="padding-tall" id="philosophy">
     <div class="row">
       <div class="columns text-center medium-12 medium-centered">
         <h2 class="bold">Our Philosophy &amp; Approach</h2>
         <br>
-        <p class="lead">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores accusamus, consectetur excepturi atque, iure quibusdam saepe dolorum necessitatibus repellendus earum voluptatibus vero aspernatur expedita, nam nostrum debitis facilis. Amet, quos.
+        {{ cms.consultingservices.philosophy|safe }}
+        <p class="text-center">
+          <a href="#" class="button">Contact Us</a>
         </p>
       </div>
     </div>
-  </section> -->
+  </section>
 
   {% include 'templates/partials/testimonials.html' %}
 

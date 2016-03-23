@@ -1,15 +1,3 @@
-{# ------------------------------------------------------- #}
-
-{# YOUR BASE TEMPLATE. EVERYTHING GETS LOADED INTO THIS PAGE. #}
-
-{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
-{# http://paularmstrong.github.io/swig/docs/tags/ #}
-
-{# Learn about calling data into Webhook pages here: #}
-{# http://www.webhook.com/docs/template-rules-and-filters/ #}
-
-{# ------------------------------------------------------- #}
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -30,14 +18,10 @@
     <meta property="og:title" content="{% if item.name %}{{ item.name }}{% else %}{{ site_title }}{% endif %}" />
     <meta property="og:description" content="{% if item.overview %}{{ item.overview }}{% else %}{{ site_description }}{% endif %}" />
 
-
     <link rel="shortcut icon" href="/static/images/favicon.png">
     <link rel="apple-touch-icon" href="/static/images/touch-icon.png">
 
     <link rel="stylesheet" href="//cdn.selz.com/jquery/1.0.11/jquery.selz.min.css">
-
-    {# Put your CSS in here and we'll minify it into one file. No CDN scripts. More info: #}
-    {# http://www.webhook.com/docs/minify-your-js-and-css/ #}
 
     <!-- build:css /static/css/minified.css -->
     <link rel="stylesheet" href="/static/css/foundation.min.css">
@@ -59,10 +43,9 @@
     {% block body %}
 
       {% block header %}
-        <div id="header">{% include "templates/partials/header-nav.html" %}</div>
+        <div id="header">{% include "templates/partials/header.html" %}</div>
       {% endblock %}
 
-      {# By default, your inner pages will load into this block. #}
       <div id="content">
         {% block content %}{% endblock %}
       </div>
@@ -74,9 +57,6 @@
             <p><a href="{{url(type)}}">{{type}} type</a></p>
         {% endfor %}
       {% endblock %}
-
-      {# Put your JS in here and we'll minify it into one file. No CDN scripts. More info: #}
-      {# http://www.webhook.com/docs/minify-your-js-and-css/ #}
 
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
       <script src="//cdn.selz.com/jquery/1.0.11/jquery.selz.min.js"></script>
@@ -94,15 +74,13 @@
       <script src="/static/javascript/main.js"></script>
       <!-- endbuild -->
 
-
       {% block scripts_extra %}{% endblock %}
 
-      {# Google Analytics code. Feel free to remove. #}
       <script>
-        // var _gaq=[['_setAccount','UA-3161902-1'],['_trackPageview']];
-        // (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        // g.src='//www.google-analytics.com/ga.js';
-        // s.parentNode.insertBefore(g,s)}(document,'script'));
+        var _gaq=[['_setAccount','UA-3161902-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src='//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
       </script>
     {% endblock %}
   </body>

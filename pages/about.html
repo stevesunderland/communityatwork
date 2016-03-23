@@ -13,7 +13,7 @@
             </div>
           </div>
         </div>
-    </div>
+      </div>
     </div>
   </section>
 
@@ -24,14 +24,12 @@
     <div class="row small-up-1 medium-up-3 large-up-3">
       {% for item in cms.staff|where('category', 'Professional Staff') %}
         <a href="{{ url(item) }}" class="columns text-center staff" style="color:inherit">
-          <!-- <div class="columns text-center staff"> -->
-            <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
-            <h3>{{ item.name }}</h3>
-            <h5 class="text-gray">{{ item.title }}</h5>
-            <p>
-              {{ item.overview }}
-            </p>
-          <!-- </div> -->
+          <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
+          <h3>{{ item.name }}</h3>
+          <h5 class="text-gray">{{ item.title }}</h5>
+          <p>
+            {{ item.overview }}
+          </p>
         </a>
       {% endfor %}
     </div>
@@ -43,15 +41,13 @@
 
     <div class="row small-up-1 medium-up-3 large-up-3">
       {% for item in cms.staff|where('category', 'Associates') %}
-          <a href="{{ url(item) }}" class="columns text-center staff" style="color:inherit">
-          <!-- <div class="columns text-center staff"> -->
-            <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
-            <h3>{{ item.name }}</h3>
-            <h5 class="text-gray">{{ item.title }}</h5>
-            <p>
-              {{ item.overview }}
-            </p>
-          <!-- </div> -->
+        <a href="{{ url(item) }}" class="columns text-center staff" style="color:inherit">
+          <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
+          <h3>{{ item.name }}</h3>
+          <h5 class="text-gray">{{ item.title }}</h5>
+          <p>
+            {{ item.overview }}
+          </p>
         </a>
       {% endfor %}
     </div>
@@ -62,15 +58,13 @@
 
     <div class="row small-up-1 medium-up-3 large-up-3">
       {% for item in cms.staff|where('category', 'Operations Staff') %}
-          <a href="{{ url(item) }}" class="columns text-center staff" style="color:inherit">
-          <!-- <div class="columns text-center staff"> -->
-            <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
-            <h3>{{ item.name }}</h3>
-            <h5 class="text-gray">{{ item.title }}</h5>
-            <p>
-              {{ item.overview }}
-            </p>
-          <!-- </div> -->
+        <a href="{{ url(item) }}" class="columns text-center staff" style="color:inherit">
+          <img data-src="{{ item.image|imageCrop(150) }}" alt="" class="img-circle">
+          <h3>{{ item.name }}</h3>
+          <h5 class="text-gray">{{ item.title }}</h5>
+          <p>
+            {{ item.overview }}
+          </p>
         </a>
       {% endfor %}
     </div>
@@ -79,24 +73,20 @@
   <section class="padding-tall" id="community-at-work">
     <div class="row">
       <div class="columns text-center">
-          <h2 style="margin-bottom: 1em;">Community at Work</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-          <br>
-          <br>
-          <div>
-            <a href="#" class="button outline">Learn more about what we do <i class="icon-arrow-right"></i> </a>
-          </div>
+        <h2 style="margin-bottom: 1em;">Community at Work</h2>
+        <p class="lead">{{ cms.homepage.overview }}</p>
+        <br>
+        <br>
+        <div>
+          <a href="/" class="button outline">Learn more about what we do <i class="icon-arrow-right"></i> </a>
+        </div>
       </div>
     </div>
   </section>
 
-  {# our clients #}
-
-<div class="bg-haze">
-  {% include 'templates/partials/clients-full.html' %}
-</div>
-
-  {# authors of the best seller #}
+  <div class="bg-haze">
+    {% include 'templates/partials/clients-full.html' %}
+  </div>
 
   {% include 'templates/partials/book.html' %}
 
