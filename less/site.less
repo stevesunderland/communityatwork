@@ -1,9 +1,16 @@
-@purple: #512DA8;
-@orange: #D84315;
-@teal: #00BFA5;
-@yellow: #C0CA33;
+// @purple: #512DA8;
+// @orange: #D84315;
+// @teal: #00BFA5;
+// @yellow: #C0CA33;
 
 @primary: #222;
+
+@red: #D9203B;
+@orange: #D99320;
+@green: #8FD916;
+@teal: #00BFBF;
+@purple: #5716D9;
+
 
 /*body {
   padding: 40px;
@@ -158,6 +165,18 @@ nav {
 			a {
 				color: #fff;
 			}
+		}
+
+		&.light {
+			a {
+				color: #fff;
+			}
+			h4 {
+				a {
+					background-image: url('/static/images/community-at-work-icon-light.svg');
+				}
+			}
+			// &:hover
 		}
 	}
 
@@ -328,7 +347,8 @@ nav {
 	h3 {
 		color: #999;
 		margin-bottom: 1em;
-		margin-top: 1em;
+		// margin-top: 1em;
+		margin-top: 0.6em;
 		margin-left: 2.3em;
 		line-height: 1.1;
 	}
@@ -564,14 +584,16 @@ nav {
 	background-color: #ccc;
 
 	h1 {
-		font-size: 2em;
+		font-size: 1.75em;
+		margin-bottom: 0.5em;
 
-		margin-top: 1em;
+		// margin-top: 1em;
+		margin-top: 0;
 	}
 
 	p.lead {
-		font-size: 1em;
-		line-height: 1.5;
+		font-size: 0.9em;
+		line-height: 1.4;
 	}
 	@media(max-width: 480px) {
 		font-size: 1.25em;
@@ -593,22 +615,25 @@ nav {
 
 
 .overlay {
-	background-color: rgba(110,110,110,0.7);
+	background-color: rgba(30,30,30,0.7);
 	// background-color: fade(red, 50%);
 	// background-color: fade(#AF0922, 70%);
 
-	// &-purple {
-	// 	background-color: fade(@purple, 50%);
-	// }
-	// &-orange {
-	// 	background-color: fade(@orange, 50%);
-	// }
-	// &-teal {
-	// 	background-color: fade(@teal, 50%);
-	// }
-	// &-yellow {
-	// 	background-color: fade(@yellow, 50%);
-	// }
+	&.overlay-red {
+		background-color: fade( darken(@red, 10%), 80%);
+	}
+	&.overlay-orange {
+		background-color: fade( darken(@orange, 10%), 80%);
+	}
+	&.overlay-green {
+		background-color: fade( darken(@green, 10%), 80%);
+	}
+	&.overlay-teal {
+		background-color: fade( darken(@teal, 10%), 80%);
+	}
+	&.overlay-purple {
+		background-color: fade( darken(@purple, 10%), 80%);
+	}
 }
 
 
@@ -644,9 +669,17 @@ nav {
 			vertical-align: bottom;
 		}
 	}
+
+}
+
+ul.contact {
+	// margin-left: 2em;
+    margin-left: 5.3em !important;
+    margin-bottom: 2em;
+
 	ul {
 		list-style: none;
-		font-size: 1.5em;
+		// font-size: 1.5em;
 
 		li {
 			margin-bottom: 1em;
@@ -728,7 +761,7 @@ nav {
 
 	p {
 		font-size: 1em;
-		margin-bottom: 0;
+		// margin-bottom: 0;
 	}
 }
 
@@ -773,7 +806,7 @@ nav {
 		}
 	}
 	.overlay {
-		background-color: rgba(110,110,110,0.6);
+		// background-color: rgba(110,110,110,0.6);
 		height: 100%;
 		width: 100%;
 		transition: all 0.5s;
@@ -783,7 +816,7 @@ nav {
 		}
 
 		&:hover {
-			background-color: rgba(110,110,110,0.8);
+			background-color: rgba(30,30,30,0.8);
 		}
 	}
 
@@ -798,7 +831,7 @@ p {
 
 	&.lead {
 		font-size: 1.75em;
-		line-height: 1.5;
+		line-height: 1.4;
 	}
 
 }

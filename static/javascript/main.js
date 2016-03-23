@@ -57,7 +57,11 @@ var Site = {
 		// add transparent class
     var offset = $(window).scrollTop();
 		if ( offset == 0 && $('#hero').length ) {
-			// $('#header nav').addClass('transparent');
+      $('#header nav').addClass('transparent');
+
+      if (!$('body').hasClass('index')) {
+  			$('#header nav').addClass('light');
+      }
 		}
 
 		$(window).scroll(function(){
@@ -73,9 +77,9 @@ var Site = {
 			var offset = $(window).scrollTop();
 
 			if ( offset == 0 && $('#hero').length ) {
-				// $('nav').addClass('transparent');
+				$('nav').addClass('transparent');
 			} else {
-				// $('nav').removeClass('transparent');
+				$('nav').removeClass('transparent');
 			}
 
       if ( offset == 0 && $('body').hasClass('index') ) {

@@ -189,6 +189,12 @@ nav.transparent:hover {
 nav.transparent:hover a {
   color: #fff;
 }
+nav.transparent.light a {
+  color: #fff;
+}
+nav.transparent.light h4 a {
+  background-image: url('/static/images/community-at-work-icon-light.svg');
+}
 #footer nav {
   background-color: #222;
   padding: 2em 1.5em;
@@ -310,7 +316,7 @@ nav a {
 nav h3 {
   color: #999;
   margin-bottom: 1em;
-  margin-top: 1em;
+  margin-top: 0.6em;
   margin-left: 2.3em;
   line-height: 1.1;
 }
@@ -493,12 +499,13 @@ nav .social {
   background-color: #ccc;
 }
 #hero h1 {
-  font-size: 2em;
-  margin-top: 1em;
+  font-size: 1.75em;
+  margin-bottom: 0.5em;
+  margin-top: 0;
 }
 #hero p.lead {
-  font-size: 1em;
-  line-height: 1.5;
+  font-size: 0.9em;
+  line-height: 1.4;
 }
 @media (max-width: 480px) {
   #hero {
@@ -518,7 +525,22 @@ nav .social {
   color: #333;
 }
 .overlay {
-  background-color: rgba(110, 110, 110, 0.7);
+  background-color: rgba(30, 30, 30, 0.7);
+}
+.overlay.overlay-red {
+  background-color: rgba(173, 25, 47, 0.8);
+}
+.overlay.overlay-orange {
+  background-color: rgba(173, 117, 25, 0.8);
+}
+.overlay.overlay-green {
+  background-color: rgba(112, 171, 17, 0.8);
+}
+.overlay.overlay-teal {
+  background-color: rgba(0, 140, 140, 0.8);
+}
+.overlay.overlay-purple {
+  background-color: rgba(68, 17, 171, 0.8);
 }
 .callout {
   background-color: #eee;
@@ -544,17 +566,20 @@ nav .social {
   margin-right: 0.5em;
   vertical-align: bottom;
 }
-#map ul {
-  list-style: none;
-  font-size: 1.5em;
+ul.contact {
+  margin-left: 5.3em !important;
+  margin-bottom: 2em;
 }
-#map ul li {
+ul.contact ul {
+  list-style: none;
+}
+ul.contact ul li {
   margin-bottom: 1em;
   margin-left: 3.2em;
   margin-top: 1em;
   color: #fff;
 }
-#map ul li:before {
+ul.contact ul li:before {
   content: '';
   font-family: 'icomoon';
   height: 1em;
@@ -568,19 +593,19 @@ nav .social {
   border-radius: 1000px;
   transition: color 0.3s;
 }
-#map ul li:hover {
+ul.contact ul li:hover {
   color: #fff;
 }
-#map ul li:hover:before {
+ul.contact ul li:hover:before {
   color: #fff;
 }
-#map ul li.map:before {
+ul.contact ul li.map:before {
   content: '\e904';
 }
-#map ul li.email:before {
+ul.contact ul li.email:before {
   content: '\e905';
 }
-#map ul li.phone:before {
+ul.contact ul li.phone:before {
   content: '\e906';
 }
 #map a {
@@ -613,7 +638,6 @@ nav .social {
 }
 .card p {
   font-size: 1em;
-  margin-bottom: 0;
 }
 .grid .columns {
   background-color: #ddd;
@@ -629,7 +653,6 @@ nav .social {
   background-size: 120% auto;
 }
 .grid .overlay {
-  background-color: rgba(110, 110, 110, 0.6);
   height: 100%;
   width: 100%;
   transition: all 0.5s;
@@ -638,14 +661,14 @@ nav .social {
   color: #fff;
 }
 .grid .overlay:hover {
-  background-color: rgba(110, 110, 110, 0.8);
+  background-color: rgba(30, 30, 30, 0.8);
 }
 p {
   font-size: 1.2em;
 }
 p.lead {
   font-size: 1.75em;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 blockquote {
   border-left: 0;
