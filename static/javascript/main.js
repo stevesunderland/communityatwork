@@ -3,10 +3,18 @@ var Site = {
 		Site.navigation();
     Site.carousel();
 		Site.smoothscroll();
+    Site.widowFix();
 	},
+  widowFix: function() {
+    $('p.lead, h1, h2').each(function(){
+        var string = $(this).html();
+        string = string.replace(/ ([^ ]*)$/,'&nbsp;$1');
+        $(this).html(string);
+    });
+  },
 	carousel: function(){
 		$('.carousel').slick({
-			dots: true
+			dots: false
 		});
 	},
 	navigation: function() {

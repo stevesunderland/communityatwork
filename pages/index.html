@@ -67,7 +67,8 @@
         {{ cms.homepage.book_overview|safe }}
         <br>
         <div>
-          <a href="{{ url('booksarticles') }}" class="button">{{ cms.homepage.book_button_text }} <i class="icon-arrow-right"></i> </a>
+          <a href="#" class="button">Buy the Book <i class="icon-arrow-right"></i></a>
+          <a href="{{ url('booksarticles') }}" class="button outline">{{ cms.homepage.book_button_text }} <i class="icon-arrow-right"></i> </a>
         </div>
       </div>
     </div>
@@ -174,9 +175,10 @@
 {% block scripts_extra %}
     <script>
       var colors = ['#512DA8', '#D84315', '#00BFA5', '#C0CA33'];
-    // function randomColor() {
-    //   return colors[Math.floor(Math.random() * colors.length)];
-    // }
+    function randomColor() {
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+    var randomColor = randomColor();
 
 particlesJS("particles-js", {
   "particles": {
@@ -188,8 +190,9 @@ particlesJS("particles-js", {
       }
     },
     "color": {
-      // "value": colors
       "value": "#333"
+      // "value": colors
+      // "value": colors
     },
     "shape": {
       "type": "circle",
@@ -206,7 +209,7 @@ particlesJS("particles-js", {
       "anim": {
         "enable": false,
         "speed": 1,
-        "opacity_min": 0.5,
+        "opacity_min": 1,
         "sync": false
       }
     },
@@ -224,6 +227,7 @@ particlesJS("particles-js", {
       "enable": true,
       "distance": 200,
       "color": "#000000",
+      // "color": colors,
       "opacity": 1,
       "width": 1
     },
