@@ -55,22 +55,7 @@
         <div class="">
 
 
-{#           <h6>
-            {% if item.end_date %}
-              {{ item.start_date|date('M d') }} - {{ item.end_date|date('d, Y') }}
-            {% else %}
-              {{ item.start_date|date('M d, Y') }}
-            {% endif %}
-            {% if item.leader %}
-              <em>with</em>
-              {% for leader in item.leader %}
-                <a href="{{ url(leader) }}">{{ leader.name }}</a>{% if not loop.last %},{% endif %}
-              {% endfor %}
 
-
-            {% endif %}
-
-          </h6> #}
 
           <table>
             <tbody>
@@ -79,9 +64,9 @@
                 <td class="medium-8">
                   <h3>
                     {% if item.relationship %}
-                        <a href="{{ url(item.relationship) }}" style="text-decoration: underline;">{{ item.name }}</a>
+                        <a href="{{ url(item.relationship) }}" style="text-decoration: underline;">{{ item.name|replace(' [0-9]', '') }}</a>
                     {% else %}
-                      {{ item.name}}
+                      {{ item.name|replace(' [0-9]', '') }}
                     {% endif %}
                   </h3>
                 </td>

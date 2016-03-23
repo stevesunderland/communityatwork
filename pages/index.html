@@ -89,7 +89,7 @@
                   {{ item.start_date|date('F j, Y') }}
                 {% endif %}
               </h6>
-              <h3>{{ item.name }}</h3>
+              <h3>{{ item.name|replace(' [0-9]', '') }}</h3>
               <br>
               <p class="text-right">
                 <a href="{{ url(item) }}" class="button link small">Learn More <i class="icon-arrow-right"></i> </a>

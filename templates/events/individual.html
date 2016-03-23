@@ -18,7 +18,7 @@
       <div class="columns medium-8 medium-centered">
         <h6><a href="{{ url('events') }}" class="button link" style="padding-left: 0; color: #999;"><i class="icon-arrow-left"></i> Workshops &amp; Events</a></h6>
 
-        <h1>{{ item.name }}</h1>
+        <h1>{{ item.name|replace(' [0-9]', '') }}</h1>
         <br>
           <table>
             <tbody>
