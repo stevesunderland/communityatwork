@@ -57,17 +57,26 @@
       <div class="columns medium-8 medium-centered">
 
         {# <hr> #}
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie sapien nulla, sit amet malesuada magna pretium non. Donec feugiat ipsum aliquet, porttitor risus nec, condimentum justo. Ut sed vestibulum lacus. Etiam porta mi a dapibus egestas. Etiam eu mollis lectus, nec euismod erat. Aenean pellentesque tincidunt placerat. Morbi imperdiet lobortis ultricies.
-        </p>
-        <p>Quisque suscipit nulla ut faucibus vehicula. Morbi facilisis faucibus risus, ut scelerisque ante maximus at. Nulla interdum pretium ante, vestibulum laoreet odio porttitor vitae. Aliquam at orci in nisl rhoncus gravida. Sed eget aliquam augue, nec maximus magna. Mauris sagittis eu felis sed feugiat. Vestibulum pharetra at est eu pretium. Etiam nec felis ex. Vestibulum interdum efficitur erat a sagittis. Fusce vitae risus sed metus dapibus venenatis in at ex. Integer bibendum dolor sit amet eros fermentum, vitae sodales mi porta. Ut massa elit, aliquam quis porta scelerisque, viverra maximus tellus. Maecenas in magna semper, consequat justo eget, elementum libero.
-        </p>
-        <p>Aliquam dictum, sem nec gravida malesuada, nibh felis condimentum mauris, vel efficitur purus velit eget sapien. Morbi eu enim metus. Morbi nec tellus gravida, molestie urna in, semper lectus. Aenean vulputate egestas tincidunt. Maecenas nec ullamcorper magna, at vehicula tellus. Aliquam sit amet urna a leo pharetra interdum. Nam lacinia aliquam mauris at iaculis. Aenean et massa rutrum, tempus nunc semper, consectetur nulla. Nulla nisi ligula, pellentesque at congue vel, pretium ut dolor. Fusce eget purus eget turpis lobortis euismod ut ac risus.
-        </p>
-        <p>Ut aliquet lacus vitae lacus tincidunt commodo. Aenean egestas rutrum fringilla. Aliquam pulvinar, leo a malesuada pulvinar, augue quam finibus eros, at venenatis libero eros ut ante. Etiam velit ligula, luctus ut molestie in, vestibulum quis orci. Curabitur lobortis metus massa, sed feugiat elit condimentum sed. Duis ultricies turpis augue, a auctor metus euismod at. Quisque tempor risus et nisl condimentum, quis malesuada nibh pretium.
-        </p>
-        <p>Phasellus luctus nunc eu velit posuere finibus. Mauris augue sem, aliquet eu ipsum sit amet, pretium sodales libero. Cras ornare ornare lacus a malesuada. Pellentesque eget ex tristique, blandit magna quis, hendrerit lacus. Proin consectetur efficitur tellus, id rutrum leo luctus a. Etiam nec maximus ex. Curabitur enim justo, finibus vel vestibulum eget, vestibulum eget mi. Etiam id urna mi. In consequat varius congue. Aenean leo mauris, maximus in velit eget, viverra aliquam felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse ac erat ac orci scelerisque varius.
-        </p>
+
+        {% if item.essay %}
+            {{ item.essay|safe }}
+        {% else %}
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie sapien nulla, sit amet malesuada magna pretium non. Donec feugiat ipsum aliquet, porttitor risus nec, condimentum justo. Ut sed vestibulum lacus. Etiam porta mi a dapibus egestas. Etiam eu mollis lectus, nec euismod erat. Aenean pellentesque tincidunt placerat. Morbi imperdiet lobortis ultricies.
+          </p>
+          <p>Quisque suscipit nulla ut faucibus vehicula. Morbi facilisis faucibus risus, ut scelerisque ante maximus at. Nulla interdum pretium ante, vestibulum laoreet odio porttitor vitae. Aliquam at orci in nisl rhoncus gravida. Sed eget aliquam augue, nec maximus magna. Mauris sagittis eu felis sed feugiat. Vestibulum pharetra at est eu pretium. Etiam nec felis ex. Vestibulum interdum efficitur erat a sagittis. Fusce vitae risus sed metus dapibus venenatis in at ex. Integer bibendum dolor sit amet eros fermentum, vitae sodales mi porta. Ut massa elit, aliquam quis porta scelerisque, viverra maximus tellus. Maecenas in magna semper, consequat justo eget, elementum libero.
+          </p>
+          <p>Aliquam dictum, sem nec gravida malesuada, nibh felis condimentum mauris, vel efficitur purus velit eget sapien. Morbi eu enim metus. Morbi nec tellus gravida, molestie urna in, semper lectus. Aenean vulputate egestas tincidunt. Maecenas nec ullamcorper magna, at vehicula tellus. Aliquam sit amet urna a leo pharetra interdum. Nam lacinia aliquam mauris at iaculis. Aenean et massa rutrum, tempus nunc semper, consectetur nulla. Nulla nisi ligula, pellentesque at congue vel, pretium ut dolor. Fusce eget purus eget turpis lobortis euismod ut ac risus.
+          </p>
+          <p>Ut aliquet lacus vitae lacus tincidunt commodo. Aenean egestas rutrum fringilla. Aliquam pulvinar, leo a malesuada pulvinar, augue quam finibus eros, at venenatis libero eros ut ante. Etiam velit ligula, luctus ut molestie in, vestibulum quis orci. Curabitur lobortis metus massa, sed feugiat elit condimentum sed. Duis ultricies turpis augue, a auctor metus euismod at. Quisque tempor risus et nisl condimentum, quis malesuada nibh pretium.
+          </p>
+          <p>Phasellus luctus nunc eu velit posuere finibus. Mauris augue sem, aliquet eu ipsum sit amet, pretium sodales libero. Cras ornare ornare lacus a malesuada. Pellentesque eget ex tristique, blandit magna quis, hendrerit lacus. Proin consectetur efficitur tellus, id rutrum leo luctus a. Etiam nec maximus ex. Curabitur enim justo, finibus vel vestibulum eget, vestibulum eget mi. Etiam id urna mi. In consequat varius congue. Aenean leo mauris, maximus in velit eget, viverra aliquam felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse ac erat ac orci scelerisque varius.
+          </p>
+        {% endif %}
         {# <p><a href="{{ url('facilitationservices') }}">View a list of all facilitationservices</a></p> #}
+
+
+        {% include 'templates/partials/share.html' %}
+
         <br>
         <hr>
         <br>
