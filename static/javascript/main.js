@@ -221,7 +221,7 @@ $(window).on('resize', function(){
 
 $(function() {
   $.selz({
-      //
+      checkout: true,
       theme: {
         button: {
           bg:             "#5fa9df",
