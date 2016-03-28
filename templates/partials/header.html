@@ -7,14 +7,7 @@
 			    <h3 class="show-for-large" style="margin-top: 1em;">Supporting groups to do their&nbsp;best&nbsp;thinking.</h3>
 	  		</div>
 	  		<div class="columns small-12 medium-6 large-12 show-for-large">
-			    <div class="social">
-			    	{% for item in ['facebook', 'twitter', 'linkedin'] %}
-						<a href="#" class="{{item}}">
-							<i class="icon-{{item}}-with-circle"></i>
-							{# {{item}} #}
-						</a>
-			    	{% endfor %}
-			    </div>
+			    {% include 'templates/partials/social.html' %}
 	  		</div>
 	  		<div class="columns small-4 medium-6 hide-for-large text-right">
 	  			<a href="#" class="menu-toggle"><span>Menu</span> <i class="icon-menu"></i></a>
@@ -67,13 +60,8 @@
   		</div>
   		<div class="columns medium-6">
   			<div class="space show-for-medium-only" style="display:block;height:1em;"></div>
-		    <div class="social text-right">
-		    	{% for item in ['facebook', 'twitter', 'linkedin'] %}
-					<a href="#" class="{{item}}">
-						<i class="icon-{{item}}-with-circle"></i>
-						{# {{item}} #}
-					</a>
-		    	{% endfor %}
+		    <div class="text-right">
+		    	{% include "templates/partials/social.html" %}
 		    </div>
   		</div>
 	</div>
