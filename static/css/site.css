@@ -710,6 +710,15 @@ blockquote p.caption {
 #clients ul {
   list-style: none;
 }
+.client-logo {
+  opacity: 0.5;
+  max-height: 80px;
+  margin: 1em auto;
+  transition: all 0.3s;
+}
+.client-logo:hover {
+  opacity: 1;
+}
 .services ul {
   font-size: 1.5em;
   line-height: 1.5;
