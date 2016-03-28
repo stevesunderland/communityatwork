@@ -3,7 +3,7 @@ var Site = {
 		Site.navigation();
     Site.carousel();
 		Site.smoothscroll();
-    Site.widowFix();
+    // Site.widowFix();
 	},
   widowFix: function() {
     $('p.lead, h1, h2').each(function(){
