@@ -762,7 +762,7 @@ i.icon-arrow-left, i.icon-arrow-right {
 /* Fallback styles */
 .book {
   display: inline-block;
-  box-shadow: 0px 0px 20px #333;
+  // box-shadow: 0px 0px 20px #333;
   margin: 10px;
 }
 .book img { vertical-align: middle; }
@@ -774,56 +774,56 @@ i.icon-arrow-left, i.icon-arrow-right {
  *
  *  Visit http://modernizr.com/ for installation instructions
  */
-.csstransforms3d  .books {
-  -moz-perspective: 100px;
-  -moz-transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-}
-.csstransforms3d  .book {
-  position: relative;
-  -webkit-transform: perspective(100) rotateY(-3deg);
-  outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
-  box-shadow: none;
-  margin: 0;
-  transition: all 0.5s;
+// .csstransforms3d  .books {
+//   -moz-perspective: 100px;
+//   -moz-transform-style: preserve-3d;
+//   -webkit-transform-style: preserve-3d;
+// }
+// .csstransforms3d  .book {
+//   position: relative;
+//   -webkit-transform: perspective(100) rotateY(-3deg);
+//   outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
+//   box-shadow: none;
+//   margin: 0;
+//   transition: all 0.5s;
 
-  &.alt {
-	  -webkit-transform: perspective(100) rotateY(3deg);
-  }
-}
-.csstransforms3d  .book img {
-  position: relative;
-  max-width: 100%;
-}
-.csstransforms3d  .book:before,
-.csstransforms3d  .book:after {
-  position: absolute;
-  top: 2%;
-  height: 96%;
-  content: ' ';
-  z-index: -1;
-}
-.csstransforms3d  .book:before {
-  width: 100%;
-  background-color: #999;
-  box-shadow: 0px 0px 40px #999;
-}
-.csstransforms3d  .book:after {
-  width: 5%;
-  left: 100%;
-  background-color: #EFEFEF;
-  box-shadow: inset 0px 0px 5px #aaa;
-  -moz-transform: rotateY(20deg);
-  -webkit-transform: perspective(100) rotateY(20deg);
-}
-.csstransforms3d  .book.alt:after {
-  width: 5%;
-  left: auto;
-  right: 100%;
-  background-color: #ddd;
-  box-shadow: none;
-  -webkit-transform: perspective(100) rotateY(-20deg);
-}
+//   &.alt {
+// 	  -webkit-transform: perspective(100) rotateY(3deg);
+//   }
+// }
+// .csstransforms3d  .book img {
+//   position: relative;
+//   max-width: 100%;
+// }
+// .csstransforms3d  .book:before,
+// .csstransforms3d  .book:after {
+//   position: absolute;
+//   top: 2%;
+//   height: 96%;
+//   content: ' ';
+//   z-index: -1;
+// }
+// .csstransforms3d  .book:before {
+//   width: 100%;
+//   background-color: #999;
+//   box-shadow: 0px 0px 40px #999;
+// }
+// .csstransforms3d  .book:after {
+//   width: 5%;
+//   left: 100%;
+//   background-color: #EFEFEF;
+//   box-shadow: inset 0px 0px 5px #aaa;
+//   -moz-transform: rotateY(20deg);
+//   -webkit-transform: perspective(100) rotateY(20deg);
+// }
+// .csstransforms3d  .book.alt:after {
+//   width: 5%;
+//   left: auto;
+//   right: 100%;
+//   background-color: #ddd;
+//   box-shadow: none;
+//   -webkit-transform: perspective(100) rotateY(-20deg);
+// }
 
 /* ---- particles.js container ---- */
 
