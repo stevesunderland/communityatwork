@@ -1,0 +1,22 @@
+{% extends "templates/partials/base.html" %}
+{% block title %}{% parent %} - {{ cms.about.name }}{% endblock %}
+{% block content %}
+
+  <section id="hero" class="bg-haze cover" data-bg="/static/images/image-3.jpg">
+    <div class="overlay overlay-teal">
+      <div class="row">
+        <div class="columns">
+          <div class="table">
+            <div class="cell text-center padding-tall">
+              <h1>Thank you!</h1>
+              <p class="lead">We'll be in touch soon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include 'templates/partials/book.html' %}
+
+{% endblock %}
