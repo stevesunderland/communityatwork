@@ -81,9 +81,9 @@
   {% include 'templates/partials/experts.html' %}
 
   <section class="padding-tall">
-    <h2 class="text-center" style="margin-bottom: 2em;">Upcoming Workshops</h2>
+    <h2 class="text-center" style="margin-bottom: 2em;">Upcoming Public Workshops</h2>
     <div class="row expanded medium-up-2 large-up-4" data-equalizer>
-      {% for item in cms.events|slice(0,4) %}
+      {% for item in cms.events|where('public',true)|slice(0,4) %}
         <div class="columns">
           <div class="card" data-equalizer-watch>
             <a href="{{ url(item) }}">
