@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <section id="hero" class="bg-dark cover" data-bg="">
+    <section id="hero" class="bg-dark cover" data-bg="{{ cms.homepage.books__articles_image|imageCrop(1200,800) }}">
     <div class="overlay">
       <div class="row">
         <div class="columns text-center padding-tall">
