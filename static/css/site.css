@@ -648,6 +648,14 @@ ul.contact ul li.phone:before {
 .grid .columns:hover {
   background-size: 120% auto;
 }
+@media (min-width: 640px) and (max-width: 1024px) {
+  .grid .columns {
+    background-size: auto 100%;
+  }
+  .grid .columns:hover {
+    background-size: auto 120%;
+  }
+}
 .grid .overlay {
   height: 100%;
   width: 100%;
