@@ -20,7 +20,7 @@
   </section>
 
   {% for item in cms.facilitationservices %}
-    <section class="padding {% if loop.index % 2 == 0 %}bg-haze{% endif %}">
+    <section class="padding {% if loop.index % 2 == 0 %}bg-haze{% endif %}" id="{{ item.slug|replace('facilitation-services/', '') }}">
       <div class="row" data-equalizer>
         <div class="column medium-6 {% if loop.index % 2 == 0 %}medium-push-6{% endif %}" data-equalizer-watch>
           <div class="table">
@@ -29,7 +29,7 @@
               {{ item.overview|safe }}
               <br>
               <p>
-                <a href="{{ url(item) }}" class="button outline">Read More <i class="icon-arrow-right"></i> </a>
+                <a href="mailto:Facilitation@CommunityAtWork.com" class="button outline">Contact Us <i class="icon-arrow-right"></i> </a>
               </p>
             </div>
           </div>

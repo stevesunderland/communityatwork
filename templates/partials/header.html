@@ -25,7 +25,7 @@
 	        <ul class="hide-for-small-only">
 	          {% for item in cms.facilitationservices %}
 	            <li>
-	              <a href="{{ url(item) }}">{{ item.name }}</a>
+	              <a href="{{ url('facilitationservices') }}#{{ item.slug|replace('facilitation-services/', '') }}">{{ item.name }}</a>
 	            </li>
 	          {% endfor %}
 	        </ul>
