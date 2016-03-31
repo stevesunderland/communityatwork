@@ -1,3 +1,12 @@
+.text-orange {
+  color: #D99320 !important;
+}
+.text-teal {
+  color: #00BFBF !important;
+}
+.text-purple {
+  color: #5716D9 !important;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -620,26 +629,39 @@ ul.contact ul li.phone:before {
   color: #fff;
 }
 .card {
-  background-color: #eee;
-  padding: 1em 1.5em;
+  background-color: transparent;
+  padding: 1em 0;
   margin-bottom: 2em;
   transition: all 0.3s;
   position: relative;
-}
-.card:hover {
-  background-color: #ddd;
+  border-top: 2px solid;
 }
 .card a {
   color: inherit;
 }
 .card .button {
-  margin-bottom: 0;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  text-align: right;
   color: #999;
+}
+.card .button.link {
+  padding: 0;
+}
+.card.orange {
+  border-top-color: #D99320;
+}
+.card.orange:hover a {
+  color: #D99320 !important;
+}
+.card.teal {
+  border-top-color: #00BFBF;
+}
+.card.teal:hover a {
+  color: #00BFBF !important;
+}
+.card.purple {
+  border-top-color: #5716D9;
+}
+.card.purple:hover a {
+  color: #5716D9 !important;
 }
 .card p {
   font-size: 1em;

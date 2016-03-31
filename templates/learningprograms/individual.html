@@ -69,16 +69,9 @@
         <br>
         <hr>
         <br>
-        <h2>Frequently Asked Questions</h2>
+        <h2 style="margin-bottom: 1em;">Frequently Asked Questions</h2>
 
-        <dl>
-          {% for item in [1,2,3,4,5] %}
-            <dt>Question {{ item }}</dt>
-            <dd>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias unde consequatur magni, cumque, eveniet ipsa id assumenda iusto a porro velit dolorem numquam. Accusamus eligendi provident quis eveniet voluptatum, quaerat.
-            </dd>
-          {% endfor %}
-        </dl>
+        {{ item.content|safe }}
 
         <br>
         <hr>
