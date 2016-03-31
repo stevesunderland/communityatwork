@@ -2,7 +2,7 @@
 
 @red: #D9203B;
 @orange: #D99320;
-@green: #8FD916;
+@green: darken(#8FD916, 10%);
 @teal: #00BFBF;
 @purple: #5716D9;
 
@@ -14,6 +14,12 @@
 }
 .text-purple {
 	color: @purple !important;
+}
+.text-green {
+	color: @green !important;
+}
+.text-red {
+	color: @red !important;
 }
 
 @keyframes fadeIn {
@@ -483,6 +489,10 @@ nav {
 		animation-delay: 1s;
 	}
 	.index & {
+		.cell {
+			height: 70vh;
+		}
+
 		h1, h3, p {
 			color: #333;
 		}
@@ -658,6 +668,16 @@ ul.contact {
 
 	}
 
+	&.green {
+		border-top-color: @green;
+
+		&:hover {
+			a {
+				color: @green !important;
+			}
+		}
+	}
+
 
 	p {
 		font-size: 1em;
@@ -683,6 +703,11 @@ ul.contact {
 
 			&:hover {
 				background-size: auto 120%;
+			}
+		}
+		@media(min-width: 640px) {
+			.index & {
+				height: 30vh;
 			}
 		}
 	}
@@ -717,6 +742,10 @@ p {
 blockquote {
 	border-left: 0;
 
+	p {
+		color: #333;
+	}
+
 	p.lead span {
 		font-weight: 900;
 		opacity: 0.4;
@@ -724,6 +753,12 @@ blockquote {
 
 	p.caption {
 		opacity: 0.4;
+	}
+}
+.carousel, .slide {
+	&:focus, &:active {
+		border: none;
+		outline: none;
 	}
 }
 .slick-slide img {

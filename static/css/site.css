@@ -7,6 +7,12 @@
 .text-purple {
   color: #5716D9 !important;
 }
+.text-green {
+  color: #70ab11 !important;
+}
+.text-red {
+  color: #D9203B !important;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -533,6 +539,9 @@ nav .social {
   animation-duration: 1s;
   animation-delay: 1s;
 }
+.index #hero .cell {
+  height: 70vh;
+}
 .index #hero h1,
 .index #hero h3,
 .index #hero p {
@@ -548,7 +557,7 @@ nav .social {
   background-color: rgba(173, 117, 25, 0.8);
 }
 .overlay.overlay-green {
-  background-color: rgba(112, 171, 17, 0.8);
+  background-color: rgba(82, 124, 13, 0.8);
 }
 .overlay.overlay-teal {
   background-color: rgba(0, 140, 140, 0.8);
@@ -663,6 +672,12 @@ ul.contact ul li.phone:before {
 .card.purple:hover a {
   color: #5716D9 !important;
 }
+.card.green {
+  border-top-color: #70ab11;
+}
+.card.green:hover a {
+  color: #70ab11 !important;
+}
 .card p {
   font-size: 1em;
 }
@@ -687,6 +702,11 @@ ul.contact ul li.phone:before {
     background-size: auto 120%;
   }
 }
+@media (min-width: 640px) {
+  .index .grid .columns {
+    height: 30vh;
+  }
+}
 .grid .overlay {
   height: 100%;
   width: 100%;
@@ -708,12 +728,22 @@ p.lead {
 blockquote {
   border-left: 0;
 }
+blockquote p {
+  color: #333;
+}
 blockquote p.lead span {
   font-weight: 900;
   opacity: 0.4;
 }
 blockquote p.caption {
   opacity: 0.4;
+}
+.carousel:focus,
+.slide:focus,
+.carousel:active,
+.slide:active {
+  border: none;
+  outline: none;
 }
 .slick-slide img {
   display: block;

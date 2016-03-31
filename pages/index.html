@@ -36,7 +36,7 @@
   </section>
 
   <section class="grid">
-    <div class="row expanded collapse small-up-1 medium-up-3 large-up-3" data-equalizer>
+    <div class="row expanded collapse small-up-1 medium-up-3 large-up-3" data-equalizer-off>
         {% set colors = ['orange','teal','purple'] %}
         {% for item in cms.homepage.grid|slice(0,3) %}
           <div class="columns text-center cover" data-equalizer-watch data-bg="{{ item.image|imageCrop(400,300) }}">
@@ -82,11 +82,11 @@
 
 
   <section class="padding-tall">
-    <h2 class="text-center" style="margin-bottom: 2em;">Upcoming Public Workshops</h2>
-    <div class="row expanded medium-up-2 large-up-4" data-equalizer>
+    <h2 class="text-center text-green" style="margin-bottom: 2em;">Upcoming Public Workshops</h2>
+    <div class="row expanded medium-up-2 large-up-4" data-equalizer-off>
       {% for item in cms.events|where('public',true)|slice(0,4) %}
         <div class="columns">
-          <div class="card" data-equalizer-watch>
+          <div class="card green" data-equalizer-watch>
             <a href="{{ url(item) }}">
               <h6 style="text-transform: uppercase; color: #999;font-weight: bold;letter-spacing: .05em;">
                 {% if item.end_date %}
@@ -97,7 +97,7 @@
               </h6>
               <h3>{{ item.name|replace(' [0-9]', '') }}</h3>
               <br>
-              <p class="text-right">
+              <p class="text-right-off">
                 <a href="{{ url(item) }}" class="button link small">Learn More <i class="icon-arrow-right"></i> </a>
               </p>
             </a>
@@ -115,18 +115,18 @@
   </section>
 
   <section class="padding-tall bg-haze">
-    <h2 class="text-center" style="margin-bottom: 2em;">Learning Programs</h2>
-    <div class="row expanded medium-up-2 large-up-4" data-equalizer>
+    <h2 class="text-center text-orange" style="margin-bottom: 2em;">Learning Programs</h2>
+    <div class="row expanded medium-up-2 large-up-4" data-equalizer-off>
       {% for item in cms.learningprogramscategories %}
         <div class="columns">
-          <div class="card" data-equalizer-watch>
+          <div class="card orange" data-equalizer-watch>
             <a href="{{ url('learningprograms') }}#{{ item.slug|replace('learningprogramscategories/', '', 'g') }}">
               <h3>{{ item.name }}</h3>
               <p>
                 {{ item.summary }}
               </p>
-              <br>
-              <p class="text-right">
+              {# <br> #}
+              <p class="text-right-off">
                 <a href="{{ url('learningprograms') }}#{{ item.slug|replace('learningprogramscategories/', '', 'g') }}" class="button link small">Learn More <i class="icon-arrow-right"></i> </a>
               </p>
             </a>
@@ -144,16 +144,16 @@
   </section>
 
   <section class="padding-tall">
-    <h2 class="text-center" style="margin-bottom: 2em;">Facilitation Services</h2>
-    <div class="row expanded medium-up-2 large-up-4" data-equalizer>
+    <h2 class="text-center text-teal" style="margin-bottom: 2em;">Facilitation Services</h2>
+    <div class="row expanded medium-up-2 large-up-4" data-equalizer-off>
       {% for item in cms.facilitationservices %}
         <div class="columns">
-          <div class="card" data-equalizer-watch>
+          <div class="card teal" data-equalizer-watch>
             <a href="{{ url('learningprograms') }}#{{ item.slug|replace('learningprogramscategories/', '', 'g') }}">
               <h3>{{ item.name }}</h3>
                 {{ item.overview|safe }}
-              <br>
-              <p class="text-right">
+              {# <br> #}
+              <p class="text-right-off">
                 <a href="{{ url('facilitationservices') }}#{{ item.slug|replace('facilitationservices/', '', 'g') }}" class="button link small">Learn More <i class="icon-arrow-right"></i> </a>
               </p>
             </a>
