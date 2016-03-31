@@ -503,6 +503,15 @@ nav .social {
   font-size: 0.9em;
   line-height: 1.4;
 }
+#hero p.lead a {
+  border-bottom: 2px solid;
+}
+#hero p.lead a:hover,
+#hero p.lead a:active,
+#hero p.lead a:focus {
+  color: #fff;
+  opacity: 0.6;
+}
 @media (max-width: 480px) {
   #hero {
     font-size: 1.25em;
