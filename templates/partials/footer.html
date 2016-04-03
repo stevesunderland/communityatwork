@@ -88,7 +88,7 @@
 	        	<li>
 	        		<a href="{{ url('events') }}">Upcoming Workshops</a>
 	        	</li>
-	          {% for category in cms.learningprogramscategories %}
+	          {% for category in cms.learningprogramscategories|sort('order') %}
 	            <li>
 	              <a href="{{ url('learningprograms') }}#{{ category.slug|replace('learningprogramscategories/', '') }}">{{ category.name }}</a>
 	            </li>

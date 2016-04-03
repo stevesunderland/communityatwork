@@ -14,6 +14,11 @@
         <h4>
           {{ item.overview }}
         </h4>
+        {% if item.content %}
+            <hr>
+            {{ item.content|safe }}
+
+        {% endif %}
         <br>
 
         {% include 'templates/partials/share.html' %}
@@ -66,12 +71,15 @@
 
         {% endif %}
 
-        <br>
-        <hr>
-        <br>
-        <h2 style="margin-bottom: 1em;">Frequently Asked Questions</h2>
 
-        {{ item.content|safe }}
+        {% if item.faqs %}
+          <br>
+          <hr>
+          <br>
+          <h2 style="margin-bottom: 1em;">Frequently Asked Questions</h2>
+          {{ item.faqs|safe }}
+        {% endif %}
+
 
         <br>
         <hr>

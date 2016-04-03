@@ -50,16 +50,21 @@
 
       {% if category.learning_programs_category|size  %}
         <div class="row expanded small-up-1 medium-up-2 large-up-4" data-equalizer-off>
-          {% for item in category.learning_programs_category %}
+          {% for item in category.learning_programs_category|sort('order') %}
             <div class="columns">
-              <a href="{{ url(item) }}">
+              <a href="{% if item.content or item.faqs %}{{ url(item) }}{% else %}mailto:Learning@CommunityAtWork.com{% endif %}">
                 <div class="card {{ colors[category.order] }}" data-equalizer-watch>
-                  <h3><a href="{{ url(item) }}">{{ item.name }}</a></h3>
+                  <h3><a href="{% if item.content or item.faqs %}{{ url(item) }}{% else %}mailto:Learning@CommunityAtWork.com{% endif %}">{{ item.name }}</a></h3>
                   <p>
                     {{ item.overview }}
+
                   </p>
                   <p class="text-right-off">
-                    <a href="{{ url(item) }}" class="button link" style="padding-right: 0;">Learn More <i class="icon-arrow-right"></i></a>
+                    {% if item.content or item.faqs %}
+                      <a href="{{ url(item) }}" class="button link" style="padding-right: 0;">Learn More <i class="icon-arrow-right"></i></a>
+                    {% else %}
+                      <a href="mailto:Learning@CommunityAtWork.com" class="button link" style="padding-right: 0;">Contact Us <i class="icon-arrow-right"></i></a>
+                    {% endif %}
                   </p>
                 </div>
               </a>
